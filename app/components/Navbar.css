@@ -231,15 +231,16 @@
 }
 
 .dropdown__nav-img {
-  height: 64px;
-  width: auto;
+  height: 80px;
+  width: 90px;
   object-fit: contain;
   flex-shrink: 0;
 }
 
 @media (min-width: 768px) {
   .dropdown__nav-img {
-    height: 52px;
+    height: 68px;
+    width: 76px;
   }
 }
 
@@ -372,5 +373,5 @@ body.menu-open {
   }
 
   .menu-content__nav-label { text-align: left; }
-  .menu-content__socials { margin-top: 2rem; }
+  .menu-content__socials { margin-top: 3rem; }
 }
