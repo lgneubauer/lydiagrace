@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { IconInstagram, IconTikTok, IconSubstack } from './Icons';
+import { IconInstagram, IconTikTok, IconYouTube, IconSubstack } from './Icons';
 import './Navbar.css';
 
 const NAV_ITEMS = [
@@ -44,9 +44,10 @@ export function MenuContent({ onNavigate }) {
       </nav>
 
       <div className="menu-content__socials">
-        <a href="#" className="menu-content__social-link" aria-label="Instagram"><IconInstagram /></a>
-        <a href="#" className="menu-content__social-link" aria-label="TikTok"><IconTikTok /></a>
-        <a href="#" className="menu-content__social-link" aria-label="Substack"><IconSubstack /></a>
+        <a href="http://instagram.com/lydiagraceneubauer" target="_blank" className="menu-content__social-link" aria-label="Instagram"><IconInstagram /></a>
+        <a href="https://www.tiktok.com/@lydiagraceneubauer" target="_blank" className="menu-content__social-link" aria-label="TikTok"><IconTikTok /></a>
+        <a href="https://www.youtube.com/@lydiagraceneubauer" target="_blank" className="menu-content__social-link" aria-label="YouTube"><IconYouTube /></a>
+        <a href="https://substack.com/@lydiagrace"  target="_blank"  className="menu-content__social-link" aria-label="Substack"><IconSubstack /></a>
       </div>
     </div>
   );

@@ -96,6 +96,14 @@ export function IconTikTok() {
   );
 }
 
+export function IconYouTube() {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M23.5 6.2C23.2 5.1 22.4 4.3 21.3 4C19.4 3.5 12 3.5 12 3.5C12 3.5 4.6 3.5 2.7 4C1.6 4.3 0.8 5.1 0.5 6.2C0 8.1 0 12 0 12C0 12 0 15.9 0.5 17.8C0.8 18.9 1.6 19.7 2.7 20C4.6 20.5 12 20.5 12 20.5C12 20.5 19.4 20.5 21.3 20C22.4 19.7 23.2 18.9 23.5 17.8C24 15.9 24 12 24 12C24 12 24 8.1 23.5 6.2ZM9.6 15.6V8.4L15.8 12L9.6 15.6Z" />
+    </svg>
+  );
+}
+
 export function IconSubstack() {
   return (
     <svg width="22" height="24" viewBox="0 0 22 24" fill="currentColor">
