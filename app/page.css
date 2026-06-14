@@ -16,6 +16,13 @@
   padding: 3rem 2rem;
 }
 
+@media (max-width: 767px) {
+  .home {
+    align-items: flex-start;
+    padding-top: 4rem;
+  }
+}
+
 /* ---- Sub-pages ---- */
 
 .subpage {

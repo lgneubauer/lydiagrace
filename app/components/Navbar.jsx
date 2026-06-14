@@ -1,23 +1,27 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { IconInstagram, IconTikTok, IconYouTube, IconSubstack } from './Icons';
-import './Navbar.css';
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { IconInstagram, IconTikTok, IconYouTube, IconSubstack } from "./Icons";
+import "./Navbar.css";
 
 const NAV_ITEMS = [
-  { label: 'Food', href: '/food', position: 'food' },
-  { label: 'Astro\nReading', href: '/astro-reading', position: 'astro' },
-  { label: 'Tea Cloud', href: '/tea-cloud', position: 'tea' },
-  { label: 'Yoga', href: '/yoga', position: 'yoga' },
+  { label: "Food", href: "/food", position: "food" },
+  { label: "Astro\nReading", href: "/astro-reading", position: "astro" },
+  { label: "Tea Cloud", href: "/tea-cloud", position: "tea" },
+  { label: "Yoga", href: "/yoga", position: "yoga" },
 ];
 
 const DROPDOWN_ITEMS = [
-  { label: 'Food', href: '/food', img: '/food.png' },
-  { label: 'Tea Cloud', href: '/tea-cloud', img: '/tea-cloud.png' },
-  { label: 'Astro\nReading', href: '/astro-reading', img: '/astro-reading.png' },
-  { label: 'Yoga', href: '/yoga', img: '/yoga.png' },
+  { label: "Food", href: "/food", img: "/food.png" },
+  { label: "Tea Cloud", href: "/tea-cloud", img: "/tea-cloud.png" },
+  {
+    label: "Astro\nReading",
+    href: "/astro-reading",
+    img: "/astro-reading.png",
+  },
+  { label: "Yoga", href: "/yoga", img: "/yoga.png" },
 ];
 
 /* Home page — scattered desktop, vertical mobile */
@@ -27,7 +31,7 @@ export function MenuContent({ onNavigate }) {
       <h1 className="menu-content__title">Lydia Grace</h1>
 
       <Link href="/about" className="menu-content__about" onClick={onNavigate}>
-        About
+        ABOUT
       </Link>
 
       <nav className="menu-content__nav-scattered">
@@ -44,10 +48,39 @@ export function MenuContent({ onNavigate }) {
       </nav>
 
       <div className="menu-content__socials">
-        <a href="http://instagram.com/lydiagraceneubauer" target="_blank" className="menu-content__social-link" aria-label="Instagram"><IconInstagram /></a>
-        <a href="https://www.tiktok.com/@lydiagraceneubauer" target="_blank" className="menu-content__social-link" aria-label="TikTok"><IconTikTok /></a>
-        <a href="https://www.youtube.com/@lydiagraceneubauer" target="_blank" className="menu-content__social-link" aria-label="YouTube"><IconYouTube /></a>
-        <a href="https://substack.com/@lydiagrace"  target="_blank"  className="menu-content__social-link" aria-label="Substack"><IconSubstack /></a>
+        <a
+          href="http://instagram.com/lydiagraceneubauer"
+          target="_blank"
+          className="menu-content__social-link"
+          aria-label="Instagram"
+        >
+          <IconInstagram />
+        </a>
+        <a
+          h
+          href="https://www.tiktok.com/@lydiagraceneubauer"
+          target="_blank"
+          className="menu-content__social-link"
+          aria-label="TikTok"
+        >
+          <IconTikTok />
+        </a>
+        <a
+          href="https://www.youtube.com/@lydiagraceneubauer"
+          target="_blank"
+          className="menu-content__social-link"
+          aria-label="YouTube"
+        >
+          <IconYouTube />
+        </a>
+        <a
+          href="https://substack.com/@lydiagrace"
+          target="_blank"
+          className="menu-content__social-link"
+          aria-label="Substack"
+        >
+          <IconSubstack />
+        </a>
       </div>
     </div>
   );
@@ -56,15 +89,19 @@ export function MenuContent({ onNavigate }) {
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === '/';
+  const isHome = pathname === "/";
   const dropdownRef = useRef(null);
 
-  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
-    function handleKey(e) { if (e.key === 'Escape') setOpen(false); }
-    document.addEventListener('keydown', handleKey);
-    return () => document.removeEventListener('keydown', handleKey);
+    function handleKey(e) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
   }, []);
 
   useEffect(() => {
@@ -73,17 +110,17 @@ export default function Navbar() {
         setOpen(false);
       }
     }
-    if (open) document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
+    if (open) document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
   }, [open]);
 
   useEffect(() => {
     if (open) {
-      document.body.classList.add('menu-open');
+      document.body.classList.add("menu-open");
     } else {
-      document.body.classList.remove('menu-open');
+      document.body.classList.remove("menu-open");
     }
-    return () => document.body.classList.remove('menu-open');
+    return () => document.body.classList.remove("menu-open");
   }, [open]);
 
   if (isHome) return null;
@@ -115,7 +152,11 @@ export default function Navbar() {
           </button>
 
           <div className="dropdown__about-wrapper">
-            <Link href="/about" className="dropdown__about-link" onClick={() => setOpen(false)}>
+            <Link
+              href="/about"
+              className="dropdown__about-link"
+              onClick={() => setOpen(false)}
+            >
               About
             </Link>
           </div>
