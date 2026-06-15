@@ -287,13 +287,13 @@ body.menu-open {
     transform: translate(0, 0) rotate(0deg);
   }
   15% {
-    transform: translate(-30px, -17px) rotate(37deg);
+    transform: translate(-15px, -17px) rotate(17deg);
   }
   35% {
     transform: translate(-15px, -7px) rotate(20deg);
   }
   55% {
-    transform: translate(-8px, 12px) rotate(1deg);
+    transform: translate(-30px, 12px) rotate(1deg);
   }
   75% {
     transform: translate(-30px, -17px) rotate(1deg);
@@ -347,19 +347,19 @@ body.menu-open {
 
 @keyframes float-sketch-3 {
   0% {
-    transform: translate(0, 0) rotate(0deg);
+    transform: translate(5, 5) rotate(180deg);
   }
   22% {
-    transform: translate(37px, 9px) rotate(3deg);
+    transform: translate(-15px, 16px) rotate(20deg);
   }
   45% {
-    transform: translate(17px, 2px) rotate(37deg);
+    transform: translate(-15px, 10px) rotate(90deg);
   }
   65% {
-    transform: translate(19px, 5px) rotate(180deg);
+    transform: translate(-20px, 11px) rotate(180deg);
   }
   88% {
-    transform: translate(22px, 15px) rotate(-18deg);
+    transform: translate(2px, 13px) rotate(45deg);
   }
   100% {
     transform: translate(0, 0) rotate(0deg);
