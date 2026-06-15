@@ -277,8 +277,94 @@ body.menu-open {
 }
 
 /* =============================================
-   HOME PAGE — scattered layout
+   HOME PAGE
    ============================================= */
+
+/* ---- Floating animation ---- */
+
+@keyframes float-sketch-0 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  15% {
+    transform: translate(-30px, -17px) rotate(37deg);
+  }
+  35% {
+    transform: translate(-15px, -7px) rotate(20deg);
+  }
+  55% {
+    transform: translate(-8px, 12px) rotate(1deg);
+  }
+  75% {
+    transform: translate(-30px, -17px) rotate(1deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes float-sketch-1 {
+  0% {
+    transform: translate(-7, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(-5px, -1px) rotate(-3deg);
+  }
+  40% {
+    transform: translate(6px, -60px) rotate(2deg);
+  }
+  60% {
+    transform: translate(6px, -3px) rotate(-4deg);
+  }
+  80% {
+    transform: translate(60px, -1px) rotate(3deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes float-sketch-2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  18% {
+    transform: translate(2px, -62px) rotate(50deg);
+  }
+  42% {
+    transform: translate(6px, -65px) rotate(70deg);
+  }
+  68% {
+    transform: translate(3px, -50px) rotate(90deg);
+  }
+  85% {
+    transform: translate(1px, -14px) rotate(90deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes float-sketch-3 {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  22% {
+    transform: translate(37px, 9px) rotate(3deg);
+  }
+  45% {
+    transform: translate(17px, 2px) rotate(37deg);
+  }
+  65% {
+    transform: translate(19px, 5px) rotate(180deg);
+  }
+  88% {
+    transform: translate(22px, 15px) rotate(-18deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
 
 .menu-content {
   display: flex;
@@ -299,35 +385,29 @@ body.menu-open {
   color: var(--color-text-primary);
 }
 
+/* ---- About ---- */
+
+.menu-content__about-wrapper {
+  margin-bottom: 3rem;
+}
+
 .menu-content__about {
   font-family: var(--font-serif);
   font-size: 1.5rem;
   font-weight: 400;
   color: var(--color-text-primary);
   text-decoration: none;
-  margin-bottom: 3rem;
+  letter-spacing: 0.15em;
   transition: opacity var(--transition-smooth);
-}
-
-@media (max-width: 767px) {
-  .menu-content__about {
-    display: block;
-    width: 100%;
-    font-size: 1.35rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-align: center;
-    align-self: center;
-    margin-bottom: 2rem;
-    padding-left: 0;
-  }
 }
 
 .menu-content__about:hover {
   opacity: 0.5;
 }
 
-.menu-content__nav-scattered {
+/* ---- Nav: desktop scattered ---- */
+
+.menu-content__nav {
   position: relative;
   width: 100%;
   max-width: 900px;
@@ -339,7 +419,6 @@ body.menu-open {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
   text-decoration: none;
   transition: opacity var(--transition-smooth);
   position: absolute;
@@ -359,12 +438,47 @@ body.menu-open {
   text-align: center;
   line-height: 1.25;
   white-space: pre-line;
+  position: relative;
+  z-index: 1;
 }
 
-.menu-content__nav-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Floating PNG sketch — center-bottom-right of label */
+
+.menu-content__nav-sketch {
+  position: absolute;
+  top: 30%;
+  left: 17%;
+  z-index: 0;
+  opacity: 0.8;
+  pointer-events: none;
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* food speed */
+.menu-content__nav-sketch--delay0 {
+  animation: float-sketch-0 32s ease-in-out infinite;
+}
+
+/* tea cloud speed */
+.menu-content__nav-sketch--delay1 {
+  animation: float-sketch-1 29s ease-in-out infinite;
+}
+
+/* astro speed */
+.menu-content__nav-sketch--delay2 {
+  animation: float-sketch-2 16.5s ease-in-out infinite;
+}
+
+/* yoga speed */
+.menu-content__nav-sketch--delay3 {
+  animation: float-sketch-3 29s ease-in-out infinite;
+}
+
+/* Hide PNGs on desktop */
+.menu-content__nav-img {
+  display: none;
 }
 
 .menu-content__nav-item--food {
@@ -386,6 +500,8 @@ body.menu-open {
   transform: translateX(-50%);
 }
 
+/* ---- Socials ---- */
+
 .menu-content__socials {
   display: flex;
   align-items: center;
@@ -405,35 +521,48 @@ body.menu-open {
   opacity: 0.5;
 }
 
-/* Home mobile — vertical list */
+/* ---- Mobile: dropdown-style list ---- */
+
 @media (max-width: 767px) {
   .menu-content {
     padding-top: 0;
     justify-content: flex-start;
+    min-height: calc(100vh - 4rem);
   }
 
   .menu-content__title {
     margin-bottom: 1.5rem;
   }
 
-  .menu-content__about {
-    font-size: 1.35rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    align-self: flex-start;
-    margin-bottom: 2rem;
-    padding-left: 1.5rem;
+  /* About in oval pill */
+  .menu-content__about-wrapper {
+    margin-bottom: 2.5rem;
   }
 
-  .menu-content__nav-scattered {
+  .menu-content__about {
+    font-size: 1.35rem;
+    padding: 0.5rem 1.8rem;
+    border: 1px solid var(--color-text-primary);
+    border-radius: 50px;
+  }
+
+  .menu-content__about:hover {
+    background-color: var(--color-text-primary);
+    color: var(--color-bg);
+    opacity: 1;
+  }
+
+  /* Nav becomes vertical list */
+  .menu-content__nav {
     position: static;
     height: auto;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: 2rem;
-    padding: 0 1.5rem;
+    gap: 1.8rem;
     max-width: 320px;
+    width: 100%;
+    align-self: center;
+    flex: 1;
   }
 
   .menu-content__nav-item {
@@ -445,9 +574,26 @@ body.menu-open {
   }
 
   .menu-content__nav-label {
+    font-size: 1.35rem;
     text-align: left;
   }
+
+  /* Hide SVG sketches on mobile */
+  .menu-content__nav-sketch {
+    display: none;
+  }
+
+  /* Show PNGs on mobile */
+  .menu-content__nav-img {
+    display: block;
+    height: 80px;
+    width: 90px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
   .menu-content__socials {
-    margin-top: 3rem;
+    margin-top: auto;
+    padding-top: 2rem;
   }
 }

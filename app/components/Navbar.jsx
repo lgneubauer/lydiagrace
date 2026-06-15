@@ -7,10 +7,20 @@ import { IconInstagram, IconTikTok, IconYouTube, IconSubstack } from "./Icons";
 import "./Navbar.css";
 
 const NAV_ITEMS = [
-  { label: "Food", href: "/food", position: "food" },
-  { label: "Astro\nReading", href: "/astro-reading", position: "astro" },
-  { label: "Tea Cloud", href: "/tea-cloud", position: "tea" },
-  { label: "Yoga", href: "/yoga", position: "yoga" },
+  { label: "Food", href: "/food", position: "food", img: "/food.png" },
+  {
+    label: "Tea Cloud",
+    href: "/tea-cloud",
+    position: "tea",
+    img: "/tea-cloud.png",
+  },
+  {
+    label: "Astro\nReading",
+    href: "/astro-reading",
+    position: "astro",
+    img: "/astro-reading.png",
+  },
+  { label: "Yoga", href: "/yoga", position: "yoga", img: "/yoga.png" },
 ];
 
 const DROPDOWN_ITEMS = [
@@ -24,18 +34,24 @@ const DROPDOWN_ITEMS = [
   { label: "Yoga", href: "/yoga", img: "/yoga.png" },
 ];
 
-/* Home page — scattered desktop, vertical mobile */
+/* Home page — single nav, CSS handles mobile vs desktop */
 export function MenuContent({ onNavigate }) {
   return (
     <div className="menu-content">
       <h1 className="menu-content__title">Lydia Grace</h1>
 
-      <Link href="/about" className="menu-content__about" onClick={onNavigate}>
-        ABOUT
-      </Link>
+      <div className="menu-content__about-wrapper">
+        <Link
+          href="/about"
+          className="menu-content__about"
+          onClick={onNavigate}
+        >
+          ABOUT
+        </Link>
+      </div>
 
-      <nav className="menu-content__nav-scattered">
-        {NAV_ITEMS.map((item) => (
+      <nav className="menu-content__nav">
+        {NAV_ITEMS.map((item, i) => (
           <Link
             key={item.href}
             href={item.href}
@@ -43,6 +59,14 @@ export function MenuContent({ onNavigate }) {
             onClick={onNavigate}
           >
             <span className="menu-content__nav-label">{item.label}</span>
+            {/* Floating PNG sketch — desktop only */}
+            <img
+              src={item.img}
+              alt=""
+              className={`menu-content__nav-sketch menu-content__nav-sketch--delay${i}`}
+            />
+            {/* PNG image — mobile only */}
+            <img src={item.img} alt="" className="menu-content__nav-img" />
           </Link>
         ))}
       </nav>
@@ -57,7 +81,6 @@ export function MenuContent({ onNavigate }) {
           <IconInstagram />
         </a>
         <a
-          h
           href="https://www.tiktok.com/@lydiagraceneubauer"
           target="_blank"
           className="menu-content__social-link"
@@ -157,7 +180,7 @@ export default function Navbar() {
               className="dropdown__about-link"
               onClick={() => setOpen(false)}
             >
-              About
+              ABOUT
             </Link>
           </div>
 
