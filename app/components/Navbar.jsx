@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconInstagram, IconTikTok, IconYouTube, IconSubstack } from "./Icons";
@@ -59,13 +59,11 @@ export function MenuContent({ onNavigate }) {
             onClick={onNavigate}
           >
             <span className="menu-content__nav-label">{item.label}</span>
-            {/* Floating PNG sketch — desktop only */}
             <img
               src={item.img}
               alt=""
               className={`menu-content__nav-sketch menu-content__nav-sketch--delay${i}`}
             />
-            {/* PNG image — mobile only */}
             <img src={item.img} alt="" className="menu-content__nav-img" />
           </Link>
         ))}
@@ -111,74 +109,97 @@ export function MenuContent({ onNavigate }) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
+  const [visible, setVisible] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
   const dropdownRef = useRef(null);
 
+  const handleClose = useCallback(() => {
+    setClosing(true);
+    setTimeout(() => {
+      setOpen(false);
+      setClosing(false);
+      setVisible(false);
+    }, 100);
+  }, []);
+
+  const handleOpen = useCallback(() => {
+    setOpen(true);
+    setVisible(true);
+  }, []);
+
   useEffect(() => {
     setOpen(false);
+    setClosing(false);
+    setVisible(false);
   }, [pathname]);
 
   useEffect(() => {
     function handleKey(e) {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") handleClose();
     }
     document.addEventListener("keydown", handleKey);
     return () => document.removeEventListener("keydown", handleKey);
-  }, []);
+  }, [handleClose]);
 
   useEffect(() => {
     function handleClick(e) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setOpen(false);
+        handleClose();
       }
     }
     if (open) document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
-  }, [open]);
+  }, [open, handleClose]);
 
   useEffect(() => {
-    if (open) {
+    if (visible) {
       document.body.classList.add("menu-open");
     } else {
       document.body.classList.remove("menu-open");
     }
     return () => document.body.classList.remove("menu-open");
-  }, [open]);
+  }, [visible]);
 
   if (isHome) return null;
 
   return (
     <div ref={dropdownRef}>
-      <header className="navbar">
+      <header
+        className="navbar"
+        style={open || visible ? { display: "none" } : undefined}
+      >
         <div />
-        {!open && (
-          <button
-            className="navbar__toggle"
-            onClick={() => setOpen(true)}
-            aria-expanded={false}
-            aria-label="Open menu"
-          >
-            <span className="navbar__toggle-line" />
-          </button>
-        )}
+        <button
+          className="navbar__toggle"
+          onClick={handleOpen}
+          aria-expanded={false}
+          aria-label="Open menu"
+        >
+          <span className="navbar__toggle-line" />
+        </button>
       </header>
 
-      {open && (
-        <div className="dropdown">
+      {(open || visible) && (
+        <div
+          className={`dropdown ${closing ? "dropdown--closing" : "dropdown--open"}`}
+        >
           <button
             className="dropdown__close"
-            onClick={() => setOpen(false)}
+            onClick={handleClose}
             aria-label="Close menu"
           >
             <span className="dropdown__close-icon" />
           </button>
 
+          <h1 className="dropdown__title">Lydia Grace</h1>
+
           <div className="dropdown__about-wrapper">
             <Link
               href="/about"
               className="dropdown__about-link"
-              onClick={() => setOpen(false)}
+              onClick={handleClose}
             >
               ABOUT
             </Link>
@@ -190,13 +211,48 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className="dropdown__nav-item"
-                onClick={() => setOpen(false)}
+                onClick={handleClose}
               >
                 <span className="dropdown__nav-label">{item.label}</span>
                 <img src={item.img} alt="" className="dropdown__nav-img" />
               </Link>
             ))}
           </nav>
+
+          <div className="dropdown__socials">
+            <a
+              href="http://instagram.com/lydiagraceneubauer"
+              target="_blank"
+              className="dropdown__social-link"
+              aria-label="Instagram"
+            >
+              <IconInstagram />
+            </a>
+            <a
+              href="https://www.tiktok.com/@lydiagraceneubauer"
+              target="_blank"
+              className="dropdown__social-link"
+              aria-label="TikTok"
+            >
+              <IconTikTok />
+            </a>
+            <a
+              href="https://www.youtube.com/@lydiagraceneubauer"
+              target="_blank"
+              className="dropdown__social-link"
+              aria-label="YouTube"
+            >
+              <IconYouTube />
+            </a>
+            <a
+              href="https://substack.com/@lydiagrace"
+              target="_blank"
+              className="dropdown__social-link"
+              aria-label="Substack"
+            >
+              <IconSubstack />
+            </a>
+          </div>
         </div>
       )}
     </div>

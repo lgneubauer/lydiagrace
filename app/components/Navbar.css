@@ -95,8 +95,41 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 4rem 3rem;
+  justify-content: flex-start;
+  padding: 3rem 3rem 2rem;
+}
+
+/* -- Open / close animations (mobile) -- */
+
+@keyframes dropdown-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdown-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+}
+
+.dropdown--open {
+  animation: dropdown-fade-in 0.2s ease-in-out forwards;
+}
+
+.dropdown--closing {
+  animation: dropdown-fade-out 0.1s ease-in forwards;
+  pointer-events: none;
 }
 
 /* -- iPad & desktop: corner panel -- */
@@ -168,13 +201,41 @@
   transform: rotate(-45deg);
 }
 
-/* ---- About — centered with PNG ---- */
+/* ---- Dropdown title (mobile only) ---- */
+
+.dropdown__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-primary);
+  max-width: 200px;
+  word-spacing: 100vw;
+}
+
+@media (min-width: 768px) {
+  .dropdown__title {
+    display: none;
+  }
+}
+
+/* ---- About — centered oval ---- */
 
 .dropdown__about-wrapper {
   display: flex;
   justify-content: center;
   margin-top: 3rem;
   margin-bottom: 2rem;
+}
+
+@media (max-width: 767px) {
+  .dropdown__about-wrapper {
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+  }
 }
 
 .dropdown__about-link {
@@ -221,6 +282,12 @@
   }
 }
 
+@media (max-width: 767px) {
+  .dropdown__nav {
+    flex: 1;
+  }
+}
+
 .dropdown__nav-item {
   display: flex;
   align-items: center;
@@ -262,6 +329,34 @@
     height: 68px;
     width: 76px;
   }
+}
+
+/* ---- Dropdown socials (mobile only) ---- */
+
+.dropdown__socials {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .dropdown__socials {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-top: auto;
+    padding-top: 2rem;
+    color: var(--color-text-primary);
+  }
+}
+
+.dropdown__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-smooth);
+}
+
+.dropdown__social-link:hover {
+  opacity: 0.5;
 }
 
 /* ---- Scroll lock (mobile only) ---- */
@@ -347,22 +442,88 @@ body.menu-open {
 
 @keyframes float-sketch-3 {
   0% {
-    transform: translate(5px, 5px) rotate(180deg);
+    transform: translate(0, 0) rotate(20deg);
   }
-  22% {
-    transform: translate(-15px, 16px) rotate(20deg);
+  18% {
+    transform: translate(8px, 6px) rotate(6deg);
   }
-  45% {
-    transform: translate(-15px, 10px) rotate(90deg);
+  42% {
+    transform: translate(22px, 2px) rotate(10deg);
   }
-  65% {
-    transform: translate(-20px, 11px) rotate(180deg);
+  68% {
+    transform: translate(1px, -1px) rotate(12deg);
   }
-  88% {
-    transform: translate(2px, 13px) rotate(45deg);
+  85% {
+    transform: translate(0px, 2px) rotate(8deg);
   }
   100% {
-    transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0) rotate(20deg);
+  }
+}
+
+@keyframes mobile-float-0 {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(6px) rotate(20deg);
+  }
+  60% {
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes mobile-float-1 {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px) rotate(-2deg);
+  }
+  55% {
+    transform: translateX(-8px) rotate(5deg);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes mobile-float-2 {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(8px) rotate(90deg);
+  }
+  50% {
+    transform: translateX(30px) rotate(90deg);
+  }
+  75% {
+    transform: translateX(4px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes mobile-float-3 {
+  0% {
+    transform: translateX(0);
+  }
+  35% {
+    transform: translateX(-3px) rotate(-3deg);
+  }
+  65% {
+    transform: translateX(3px) rotate(30deg);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 
@@ -473,7 +634,7 @@ body.menu-open {
 
 /* yoga speed */
 .menu-content__nav-sketch--delay3 {
-  animation: float-sketch-3 29s ease-in-out infinite;
+  animation: float-sketch-3 35s ease-in-out infinite;
 }
 
 /* Hide PNGs on desktop */
@@ -594,6 +755,19 @@ body.menu-open {
     flex-shrink: 0;
   }
 
+  .menu-content__nav-item:nth-child(1) .menu-content__nav-img {
+    animation: mobile-float-0 8s ease-in-out infinite;
+  }
+  .menu-content__nav-item:nth-child(2) .menu-content__nav-img {
+    animation: mobile-float-1 10s ease-in-out infinite;
+  }
+  .menu-content__nav-item:nth-child(3) .menu-content__nav-img {
+    animation: mobile-float-2 9s ease-in-out infinite;
+  }
+  .menu-content__nav-item:nth-child(4) .menu-content__nav-img {
+    animation: mobile-float-3 11s ease-in-out infinite;
+  }
+
   .menu-content__socials {
     margin-top: auto;
     padding-top: 2rem;
@@ -609,7 +783,7 @@ body.menu-open {
   }
 
   .menu-content__about-wrapper {
-    margin-bottom: 4rem;
+    margin-bottom: 5.5rem;
   }
 
   .menu-content__socials {

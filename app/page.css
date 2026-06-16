@@ -19,7 +19,7 @@
 @media (max-width: 767px) {
   .home {
     align-items: flex-start;
-    padding-top: 4rem;
+    padding-top: 2rem;
   }
 }
 
