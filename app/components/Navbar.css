@@ -379,22 +379,22 @@ body.menu-open {
 
 @keyframes float-sketch-0 {
   0% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  15% {
-    transform: translate(-15px, -17px) rotate(17deg);
-  }
-  35% {
-    transform: translate(-15px, -7px) rotate(20deg);
-  }
-  55% {
     transform: translate(-30px, 12px) rotate(1deg);
   }
+  15% {
+    transform: translate(-15px, -7px) rotate(20deg);
+  }
+  35% {
+    transform: translate(-35px, -22px) rotate(1deg);
+  }
+  55% {
+    transform: translate(-20px, 3px) rotate(-1deg);
+  }
   75% {
-    transform: translate(-30px, -17px) rotate(1deg);
+    transform: translate(-35px, 7px) rotate(1deg);
   }
   100% {
-    transform: translate(0, 0) rotate(0deg);
+    transform: translate(-30px, 12px) rotate(1deg);
   }
 }
 
@@ -415,7 +415,7 @@ body.menu-open {
     transform: translate(60px, -1px) rotate(3deg);
   }
   100% {
-    transform: translate(0, 0) rotate(0deg);
+    transform: translate(-7px, 0) rotate(0deg);
   }
 }
 
