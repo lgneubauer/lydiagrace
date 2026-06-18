@@ -339,6 +339,12 @@
   }
 }
 
+@media (min-width: 1025px) {
+  .navbar {
+    padding: 1.5rem 1.8rem;
+  }
+}
+
 .dropdown__nav-img {
   height: 80px;
   width: 90px;
@@ -369,6 +375,8 @@
     color: var(--color-text-primary);
   }
 }
+
+
 
 .dropdown__social-link {
   display: flex;
