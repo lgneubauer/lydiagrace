@@ -376,8 +376,6 @@
   }
 }
 
-
-
 .dropdown__social-link {
   display: flex;
   align-items: center;
@@ -409,7 +407,7 @@ body.menu-open {
 
 @keyframes float-sketch-0 {
   0% {
-    transform: translate(-30px, 12px) rotate(-31deg);
+    transform: translate(-11px, -11px) rotate(-2deg);
   }
   15% {
     transform: translate(-15px, -7px) rotate(20deg);
@@ -424,7 +422,7 @@ body.menu-open {
     transform: translate(-35px, 7px) rotate(1deg);
   }
   100% {
-     transform: translate(-30px, 12px) rotate(-31deg);
+    transform: translate(-30px, 12px) rotate(20deg);
   }
 }
 
