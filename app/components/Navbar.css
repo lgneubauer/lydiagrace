@@ -422,7 +422,7 @@ body.menu-open {
     transform: translate(-35px, 7px) rotate(1deg);
   }
   100% {
-    transform: translate(-30px, 12px) rotate(20deg);
+    transform: translate(-11px, -11px) rotate(-2deg);
   }
 }
 
