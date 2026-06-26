@@ -273,3 +273,157 @@
     padding-top: 2rem;
   }
 }
+
+/* =============================================
+   TEA CLOUD PAGE
+   ============================================= */
+
+/* ---- Main content: text + photos side by side ---- */
+
+.tea__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+/* ---- Text ---- */
+
+.tea__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tea__description {
+  font-family: var(--font-serif);
+  font-size: clamp(0.88rem, 2vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--color-text-primary);
+}
+
+.tea__highlight {
+  font-family: var(--font-serif);
+  font-size: clamp(0.88rem, 2vw, 1.05rem);
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  margin-top: 0.5rem;
+  white-space: nowrap;
+}
+
+/* ---- Photo placeholders ---- */
+
+.tea__photos {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tea__photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #d5d2ca;
+  border-radius: 2px;
+}
+
+/* ---- Email subscription placeholder ---- */
+
+.tea__subscribe {
+  width: 100%;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.tea__subscribe-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-weight: 400;
+  color: var(--color-text-primary);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.tea__subscribe-placeholder {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.08em;
+}
+
+/* ---- Tea Cloud: Mobile ---- */
+
+@media (max-width: 767px) {
+  .tea__highlight {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+
+  .tea__photos {
+    width: 100%;
+  }
+}
+
+/* ---- Tea Cloud: Tablet ---- */
+
+@media (min-width: 768px) {
+  .tea__content {
+    flex-direction: row;
+    gap: 3rem;
+    margin-bottom: 4.5rem;
+  }
+
+  .tea__text {
+    gap: 1.2rem;
+  }
+
+  .tea__highlight {
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+  }
+
+  .tea__subscribe {
+    padding-top: 2.5rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .tea__highlight {
+    font-size: 0.6rem;
+  }
+}
+
+/* ---- Tea Cloud: Desktop ---- */
+
+@media (min-width: 1025px) {
+  .tea__content {
+    gap: 5rem;
+    margin-bottom: 5rem;
+  }
+
+  .tea__text {
+    flex: 1.2;
+    gap: 1.4rem;
+  }
+
+  .tea__photos {
+    gap: 1.25rem;
+  }
+
+  .tea__subscribe {
+    padding-top: 3rem;
+  }
+}
