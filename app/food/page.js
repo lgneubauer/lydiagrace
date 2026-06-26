@@ -3,9 +3,8 @@ export const metadata = { title: "Food — Lydia Grace" };
 export default function FoodPage() {
   return (
     <div className="subpage">
-      <div className="food">
-        {/* ---- Title ---- */}
-        <h1 className="food__title">Food</h1>
+      <div className="subpage__content">
+        <h1 className="subpage__title">Food</h1>
 
         {/* ---- Intro text (user will replace) ---- */}
         <div className="food__intro">
