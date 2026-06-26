@@ -26,7 +26,6 @@
   font-family: var(--font-serif);
   font-size: clamp(2rem, 5vw, 2.8rem);
   font-weight: 700;
- 
   text-transform: uppercase;
   text-align: center;
   color: var(--color-text-primary);
@@ -110,5 +109,203 @@
     font-size: 1.05rem;
     line-height: 1.55;
     max-width: 780px;
+  }
+}
+
+/* =============================================
+   FOOD PAGE
+   ============================================= */
+
+.food {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 4rem;
+}
+
+/* ---- Title ---- */
+
+.food__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+}
+
+/* ---- Intro text area ---- */
+
+.food__intro {
+  width: 100%;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.food__intro-placeholder {
+  font-family: var(--font-serif);
+  font-size: clamp(0.88rem, 2vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--color-text-primary);
+}
+
+/* ---- Main content: clients + photos side by side ---- */
+
+.food__content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+/* ---- Clients ---- */
+
+.food__clients {
+  flex: 1;
+  min-width: 0;
+}
+
+.food__clients-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(0.85rem, 2.8vw, 1.35rem);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #cf2a2a;
+  margin-bottom: 1rem;
+}
+
+.food__clients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.food__clients-item {
+  font-family: var(--font-serif);
+  font-size: clamp(0.8rem, 2vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
+}
+
+/* ---- Photo placeholders ---- */
+
+.food__photos {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.food__photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: #d5d2ca;
+  border-radius: 2px;
+}
+
+/* ---- Contact ---- */
+
+.food__contact {
+  width: 100%;
+  padding-top: 1rem;
+  text-align: center;
+}
+
+.food__contact-placeholder {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.08em;
+}
+
+/* ---- Food: Tablet ---- */
+
+@media (min-width: 768px) {
+  .food {
+    max-width: 820px;
+    padding: 2rem 3rem 5rem;
+  }
+
+  .food__title {
+    margin-bottom: 2rem;
+  }
+
+  .food__intro {
+    margin-bottom: 4rem;
+    max-width: 600px;
+  }
+
+  .food__content {
+    gap: 3rem;
+    margin-bottom: 4.5rem;
+  }
+
+  .food__clients {
+    padding-top: 0.5rem;
+  }
+
+  .food__clients-heading {
+    margin-bottom: 1.2rem;
+  }
+
+  .food__clients-list {
+    gap: 0.45rem;
+  }
+
+  .food__contact {
+    padding-top: 1.5rem;
+  }
+}
+
+/* ---- Food: Desktop ---- */
+
+@media (min-width: 1025px) {
+  .food {
+    max-width: 1100px;
+    padding: 3rem 2rem 6rem;
+  }
+
+  .food__title {
+    margin-bottom: 2.5rem;
+  }
+
+  .food__intro {
+    max-width: 680px;
+    margin-bottom: 5rem;
+  }
+
+  .food__content {
+    gap: 5rem;
+    margin-bottom: 5rem;
+  }
+
+  .food__clients {
+    flex: 0 0 320px;
+  }
+
+  .food__photos {
+    gap: 1.25rem;
+  }
+
+  .food__contact {
+    padding-top: 2rem;
   }
 }
