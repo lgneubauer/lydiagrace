@@ -90,6 +90,8 @@
 
   .subpage__image {
     margin-top: 2.5rem;
+    transform: none !important;
+    will-change: auto;
   }
 }
 

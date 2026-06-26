@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 2.5rem;
-  background-color: transparent;
+  background-color: var(--color-bg);
 }
 
 .navbar__title {
@@ -24,6 +24,12 @@
   color: var(--color-text-primary);
 }
 
+@media (max-width: 767px) {
+  .navbar {
+    padding: 0.5rem 0.5rem;
+  }
+}
+
 /* ---- Hamburger ---- */
 
 .navbar__toggle {
@@ -32,7 +38,7 @@
   justify-content: center;
   width: 44px;
   height: 44px;
-  background: transparent;
+  background: var(--color-bg);
   border: none;
   cursor: pointer;
   position: relative;
@@ -133,6 +139,16 @@
   pointer-events: none;
 }
 
+@media (max-width: 767px) {
+  .dropdown--open {
+    animation: dropdown-fade-in 0.1s ease-in-out forwards;
+  }
+
+  .dropdown--closing {
+    animation: dropdown-fade-out 0.05s ease-in forwards;
+  }
+}
+
 /* -- iPad & desktop: corner panel -- */
 
 @media (min-width: 768px) {
@@ -181,8 +197,8 @@
 
 @media (max-width: 767px) {
   .dropdown__close {
-    top: 1.5rem;
-    right: 3rem;
+    top: 0.5rem;
+    right: 0.5rem;
   }
 }
 
@@ -257,6 +273,7 @@
 
 @media (max-width: 767px) {
   .dropdown__title {
+    margin-top: 2.5rem;
     margin-bottom: 2rem;
   }
 }
