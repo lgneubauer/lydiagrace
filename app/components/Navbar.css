@@ -250,7 +250,13 @@
 
 @media (max-width: 767px) {
   .dropdown__about-wrapper {
-    margin-top: 0.5rem;
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .dropdown__title {
     margin-bottom: 2rem;
   }
 }
