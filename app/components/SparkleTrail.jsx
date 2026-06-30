@@ -12,12 +12,18 @@ export default function SparkleTrail() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname === "/") return;
-    if (window.matchMedia("(pointer: fine)").matches === false) return;
-
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
+
+    // On homepage, clear everything and stop
+    if (pathname === "/") {
+      sparksRef.current = [];
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      return;
+    }
+
+    if (window.matchMedia("(pointer: fine)").matches === false) return;
 
     // Preload the star image
     const img = new Image();

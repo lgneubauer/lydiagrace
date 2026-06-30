@@ -193,7 +193,9 @@ export default function Navbar() {
             <span className="dropdown__close-icon" />
           </button>
 
-          <h1 className="dropdown__title">Lydia Grace</h1>
+          <Link href="/" className="dropdown__title" onClick={handleClose}>
+            Lydia Grace
+          </Link>
 
           <div className="dropdown__about-wrapper">
             <Link
