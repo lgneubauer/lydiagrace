@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
-export default function GyroTilt({ children, className, intensity = 9 }) {
+export default function GyroTilt({ children, className, intensity = 5 }) {
   const ref = useRef(null);
   const pathname = usePathname();
   const [isMobile, setIsMobile] = useState(false);
@@ -55,20 +55,20 @@ export default function GyroTilt({ children, className, intensity = 9 }) {
       targetY *= 0.985;
 
       // Spring force toward target
-      velocityX += (targetX - currentX) * 0.035;
-      velocityY += (targetY - currentY) * 0.035;
+      velocityX += (targetX - currentX) * 0.025;
+      velocityY += (targetY - currentY) * 0.025;
 
       // Inertia damping
-      velocityX *= 0.9;
-      velocityY *= 0.9;
+      velocityX *= 0.88;
+      velocityY *= 0.88;
 
       currentX += velocityX;
       currentY += velocityY;
 
       if (el && hasOrientation) {
-        const rotateZ = currentX * 0.8;
-        const rotateX = -currentY * 0.6;
-        const rotateY = currentX * 0.35;
+        const rotateZ = currentX * 0.3;
+        const rotateX = -currentY * 0.25;
+        const rotateY = currentX * 0.15;
 
         el.style.transform = `
           translate3d(${currentX}px, ${currentY}px, 0)
@@ -91,13 +91,11 @@ export default function GyroTilt({ children, className, intensity = 9 }) {
       typeof DeviceOrientationEvent !== "undefined" &&
       typeof DeviceOrientationEvent.requestPermission === "function"
     ) {
-      // Check if already granted from a previous visit
       DeviceOrientationEvent.requestPermission()
         .then((state) => {
           if (state === "granted") {
             startListening();
           } else {
-            // Wait for user tap to request
             document.addEventListener(
               "touchstart",
               function requestOnTouch() {
@@ -112,7 +110,6 @@ export default function GyroTilt({ children, className, intensity = 9 }) {
           }
         })
         .catch(() => {
-          // Permission API exists but failed — wait for tap
           document.addEventListener(
             "touchstart",
             function requestOnTouch() {
@@ -126,7 +123,6 @@ export default function GyroTilt({ children, className, intensity = 9 }) {
           );
         });
     } else {
-      // Android and other browsers
       startListening();
     }
 
