@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
-export default function GyroTilt({ children, className, intensity = 12 }) {
+export default function GyroTilt({ children, className, intensity = 9 }) {
   const ref = useRef(null);
   const pathname = usePathname();
   const [isMobile, setIsMobile] = useState(false);
@@ -17,13 +17,10 @@ export default function GyroTilt({ children, className, intensity = 12 }) {
 
     let currentX = 0;
     let currentY = 0;
-
     let velocityX = 0;
     let velocityY = 0;
-
     let targetX = 0;
     let targetY = 0;
-
     let rafId = null;
     let hasOrientation = false;
     let lastBurst = 0;
@@ -36,7 +33,6 @@ export default function GyroTilt({ children, className, intensity = 12 }) {
 
       const beta = e.beta || 0;
       const gamma = e.gamma || 0;
-
       const movement = Math.abs(gamma) + Math.abs(beta - 30);
       const now = Date.now();
 
@@ -44,12 +40,9 @@ export default function GyroTilt({ children, className, intensity = 12 }) {
       if (movement > 15 && now - lastBurst > 450) {
         lastBurst = now;
 
-        const angle = Math.random() * Math.PI * 2;
-
-        // More vertical range
-        const horizontalDist = intensity * (-20 + Math.random() * 1.2);
-
-        const verticalDist = intensity * (-6 + Math.random() * 2);
+        const angle = Math.random() * Math.PI * 1;
+        const horizontalDist = intensity * (-5 + Math.random() * 1.2);
+        const verticalDist = intensity * (-30 + Math.random() * 0.1);
 
         targetX = Math.cos(angle) * horizontalDist;
         targetY = Math.sin(angle) * verticalDist;
@@ -88,35 +81,58 @@ export default function GyroTilt({ children, className, intensity = 12 }) {
       rafId = requestAnimationFrame(animate);
     }
 
-    // iOS permission handling
+    function startListening() {
+      window.addEventListener("deviceorientation", handleOrientation);
+      rafId = requestAnimationFrame(animate);
+    }
+
+    // iOS 13+ requires permission from a user gesture
     if (
       typeof DeviceOrientationEvent !== "undefined" &&
       typeof DeviceOrientationEvent.requestPermission === "function"
     ) {
-      function requestOnTouch() {
-        DeviceOrientationEvent.requestPermission()
-          .then((state) => {
-            if (state === "granted") {
-              window.addEventListener("deviceorientation", handleOrientation);
-            }
-          })
-          .catch(console.error);
-
-        document.removeEventListener("touchstart", requestOnTouch);
-      }
-
-      document.addEventListener("touchstart", requestOnTouch, { once: true });
+      // Check if already granted from a previous visit
+      DeviceOrientationEvent.requestPermission()
+        .then((state) => {
+          if (state === "granted") {
+            startListening();
+          } else {
+            // Wait for user tap to request
+            document.addEventListener(
+              "touchstart",
+              function requestOnTouch() {
+                DeviceOrientationEvent.requestPermission()
+                  .then((s) => {
+                    if (s === "granted") startListening();
+                  })
+                  .catch(console.error);
+              },
+              { once: true },
+            );
+          }
+        })
+        .catch(() => {
+          // Permission API exists but failed — wait for tap
+          document.addEventListener(
+            "touchstart",
+            function requestOnTouch() {
+              DeviceOrientationEvent.requestPermission()
+                .then((s) => {
+                  if (s === "granted") startListening();
+                })
+                .catch(console.error);
+            },
+            { once: true },
+          );
+        });
     } else {
-      window.addEventListener("deviceorientation", handleOrientation);
+      // Android and other browsers
+      startListening();
     }
-
-    rafId = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("deviceorientation", handleOrientation);
-
       cancelAnimationFrame(rafId);
-
       if (el) {
         el.style.transform = "";
       }
