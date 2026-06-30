@@ -41,8 +41,8 @@ export default function GyroTilt({ children, className, intensity = 9 }) {
         lastBurst = now;
 
         const angle = Math.random() * Math.PI * 1;
-        const horizontalDist = intensity * (-5 + Math.random() * 1.2);
-        const verticalDist = intensity * (-30 + Math.random() * 0.1);
+        const horizontalDist = intensity * (-0.2 + Math.random() * 1.2);
+        const verticalDist = intensity * (-1 + Math.random() * 0.1);
 
         targetX = Math.cos(angle) * horizontalDist;
         targetY = Math.sin(angle) * verticalDist;
