@@ -21,7 +21,7 @@ export default function AstroReadingPage() {
           <p className="astro__description">
             Everyone's natal birth chart is like a thumbprint, each one uniquely
             singular. Like a coordinate on earth mapped by the heavens, using
-            collective ancient patterning, I use the natal chart as a divination
+            collective ancient patterning I use the natal chart as a divination
             tool.
           </p>
         </div>
@@ -112,12 +112,16 @@ export default function AstroReadingPage() {
         <div className="astro__cta">
           <a
             className="astro__calendly"
-            href="#"
+            href="https://calendly.com/lgneubauer/big-3-read"
             target="_blank"
             rel="noopener noreferrer"
           >
             Calendly Link
           </a>
+          <p className="astro__cta-price">$111</p>
+          <p className="astro__cta-details">
+            20 minute virtual session + a recording of the reading
+          </p>
         </div>
       </div>
     </div>

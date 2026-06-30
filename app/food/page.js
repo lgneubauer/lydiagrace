@@ -1,3 +1,5 @@
+import "../subpage.css";
+
 export const metadata = { title: "Food — Lydia Grace" };
 
 export default function FoodPage() {
@@ -43,9 +45,53 @@ export default function FoodPage() {
           </div>
         </div>
 
-        {/* ---- Email form placeholder ---- */}
+        {/* ---- Contact form ---- */}
         <div className="food__contact">
-          <p className="food__contact-placeholder">Email form goes here</p>
+          <p className="food__contact-label">Email</p>
+
+          {/* Replace YOUR_FORM_ID with your Formspree form ID */}
+          <form
+            className="food__form"
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+          >
+            <div className="food__field">
+              <input
+                className="food__input"
+                type="text"
+                id="food-name"
+                name="name"
+                placeholder="Name"
+                required
+              />
+            </div>
+
+            <div className="food__field">
+              <input
+                className="food__input"
+                type="email"
+                id="food-email"
+                name="email"
+                placeholder="Email"
+                required
+              />
+            </div>
+
+            <div className="food__field">
+              <textarea
+                className="food__input food__textarea"
+                id="food-message"
+                name="message"
+                placeholder="Message"
+                rows="4"
+                required
+              />
+            </div>
+
+            <button className="food__submit" type="submit">
+              Send
+            </button>
+          </form>
         </div>
       </div>
     </div>
