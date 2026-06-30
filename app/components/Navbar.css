@@ -706,25 +706,27 @@ body.menu-open {
 
 @media (max-width: 767px) {
   .menu-content {
-    padding-top: 0;
-    justify-content: flex-start;
+    padding: 0 2rem 2.5vh;
+    justify-content: space-between;
+    min-height: 100dvh;
     min-height: calc(100vh - 4rem);
   }
 
   .menu-content__title {
-    margin-bottom: 1.5rem;
+    margin-top: 2vh;
+    margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
     max-width: 200px;
     word-spacing: 100vw;
   }
 
   /* About in oval pill */
   .menu-content__about-wrapper {
-    margin-bottom: 2.5rem;
+    margin-bottom: clamp(1rem, 2.5vh, 2.5rem);
   }
 
   .menu-content__about {
-    font-size: 1.35rem;
-    padding: 0.5rem 1.8rem;
+    font-size: clamp(1.1rem, 3.5vw, 1.35rem);
+    padding: 0.4rem 1.5rem;
     border: 1px solid var(--color-text-primary);
     border-radius: 50px;
   }
@@ -741,7 +743,7 @@ body.menu-open {
     height: auto;
     display: flex;
     flex-direction: column;
-    gap: 1.8rem;
+    gap: clamp(0.6rem, 1.8vh, 1.8rem);
     max-width: 320px;
     width: 100%;
     align-self: center;
@@ -757,7 +759,7 @@ body.menu-open {
   }
 
   .menu-content__nav-label {
-    font-size: 1.35rem;
+    font-size: clamp(1rem, 3.5vw, 1.35rem);
     text-align: left;
   }
 
@@ -769,15 +771,15 @@ body.menu-open {
   /* Show PNGs on mobile — static, no animation */
   .menu-content__nav-img {
     display: block;
-    height: 80px;
-    width: 90px;
+    height: clamp(50px, 10vh, 80px);
+    width: clamp(56px, 11vh, 90px);
     object-fit: contain;
     flex-shrink: 0;
   }
 
   .menu-content__socials {
     margin-top: auto;
-    padding-top: 2rem;
+    padding-top: clamp(0.5rem, 1.5vh, 2rem);
   }
 }
 

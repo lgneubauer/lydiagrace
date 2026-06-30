@@ -1,3 +1,5 @@
+import "../subpage.css";
+
 export const metadata = { title: "Tea Cloud — Lydia Grace" };
 
 export default function TeaCloudPage() {
