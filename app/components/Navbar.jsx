@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconInstagram, IconTikTok, IconYouTube, IconSubstack } from "./Icons";
+import GyroTilt from "./GyroTilt";
 import "./Navbar.css";
 
 const NAV_ITEMS = [
@@ -64,7 +65,9 @@ export function MenuContent({ onNavigate }) {
               alt=""
               className={`menu-content__nav-sketch menu-content__nav-sketch--delay${i}`}
             />
-            <img src={item.img} alt="" className="menu-content__nav-img" />
+            <GyroTilt intensity={6 + i * 3}>
+              <img src={item.img} alt="" className="menu-content__nav-img" />
+            </GyroTilt>
           </Link>
         ))}
       </nav>

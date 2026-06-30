@@ -712,6 +712,12 @@ body.menu-open {
   color: var(--color-text-primary);
 }
 
+.menu-content__socials-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 .menu-content__social-link {
   display: flex;
   align-items: center;
