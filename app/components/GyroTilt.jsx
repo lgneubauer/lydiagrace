@@ -24,6 +24,8 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
     let rafId = null;
     let hasOrientation = false;
     let lastBurst = 0;
+    let baseBeta = null;
+    let baseGamma = null;
 
     function handleOrientation(e) {
       if (e.beta === null && e.gamma === null) return;
@@ -33,12 +35,27 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
 
       const beta = e.beta || 0;
       const gamma = e.gamma || 0;
-      const movement = Math.abs(gamma) + Math.abs(beta - 30);
+
+      // Set baseline on first reading
+      if (baseBeta === null) {
+        baseBeta = beta;
+        baseGamma = gamma;
+        return;
+      }
+
+      // Measure change from baseline, not absolute position
+      const deltaGamma = Math.abs(gamma - baseGamma);
+      const deltaBeta = Math.abs(beta - baseBeta);
+      const movement = deltaGamma + deltaBeta;
       const now = Date.now();
 
-      // Trigger movement burst
-      if (movement > 15 && now - lastBurst > 450) {
+      // Only burst on real intentional tilts
+      if (movement > 25 && now - lastBurst > 600) {
         lastBurst = now;
+
+        // Update baseline after burst
+        baseBeta = beta;
+        baseGamma = gamma;
 
         const angle = Math.random() * Math.PI * 1;
         const horizontalDist = intensity * (-0.2 + Math.random() * 1.2);
@@ -47,6 +64,10 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
         targetX = Math.cos(angle) * horizontalDist;
         targetY = Math.sin(angle) * verticalDist;
       }
+
+      // Slowly drift baseline toward current position
+      baseBeta += (beta - baseBeta) * 0.01;
+      baseGamma += (gamma - baseGamma) * 0.01;
     }
 
     function animate() {
