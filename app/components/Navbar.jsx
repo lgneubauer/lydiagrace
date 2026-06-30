@@ -65,7 +65,7 @@ export function MenuContent({ onNavigate }) {
               alt=""
               className={`menu-content__nav-sketch menu-content__nav-sketch--delay${i}`}
             />
-            <GyroTilt intensity={5 + i * 3}>
+            <GyroTilt intensity={12 + i * 3}>
               <img src={item.img} alt="" className="menu-content__nav-img" />
             </GyroTilt>
           </Link>
@@ -220,7 +220,7 @@ export default function Navbar() {
               >
                 <span className="dropdown__nav-label">{item.label}</span>
 
-                <GyroTilt intensity={5 + i * 3}>
+                <GyroTilt intensity={12 + i * 3}>
                   <img src={item.img} alt="" className="dropdown__nav-img" />
                 </GyroTilt>
               </Link>

@@ -774,7 +774,7 @@ body.menu-open {
     max-width: 320px;
     width: 100%;
     align-self: center;
-    flex: 1;
+    flex: none;
   }
 
   .menu-content__nav-item {
@@ -807,6 +807,7 @@ body.menu-open {
   .menu-content__socials {
     margin-top: auto;
     padding-top: clamp(0.5rem, 1.5vh, 2rem);
+    gap: 1.5rem;
   }
 }
 
