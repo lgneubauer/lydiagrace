@@ -247,8 +247,8 @@
   display: block;
   font-family: var(--font-serif);
   font-size: clamp(1.8rem, 4.5vw, 2.6rem);
-  font-weight: 400;
-  letter-spacing: 0.22em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -286,7 +286,7 @@
 .dropdown__about-link {
   font-family: var(--font-serif);
   font-size: 1.6rem;
-  font-weight: 400;
+  font-weight: 600;
   color: var(--color-text-primary);
   text-decoration: none;
   letter-spacing: 0.15em;
@@ -353,9 +353,9 @@
 
 .dropdown__nav-label {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
-  font-weight: 400;
-  letter-spacing: 0.15em;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--color-text-primary);
   white-space: pre-line;
@@ -580,7 +580,7 @@ body.menu-open {
 .menu-content__title {
   font-family: var(--font-serif);
   font-size: clamp(1.8rem, 4.5vw, 2.6rem);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-align: center;
@@ -597,10 +597,10 @@ body.menu-open {
 .menu-content__about {
   font-family: var(--font-serif);
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-text-primary);
   text-decoration: none;
-  letter-spacing: 0.15em;
+  letter-spacing: 0rem;
   transition: opacity var(--transition-smooth);
 }
 
@@ -634,8 +634,8 @@ body.menu-open {
 .menu-content__nav-label {
   font-family: var(--font-serif);
   font-size: clamp(1rem, 2vw, 1.25rem);
-  font-weight: 500;
-  letter-spacing: 0.18em;
+  font-weight: 600;
+  letter-spacing: 0.22rem;
   text-transform: uppercase;
   color: var(--color-text-primary);
   text-align: center;

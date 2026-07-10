@@ -8,14 +8,14 @@ export default function AstroReadingPage() {
       <div className="subpage__content">
         <h1 className="subpage__title">Big 3 Read</h1>
 
-        <div className="astro__subtitle">
+        {/* <div className="astro__subtitle">
           <p className="astro__subtitle-text">
             Natal Chart Reading — 20 minutes
           </p>
           <p className="astro__price">$111</p>
-        </div>
+        </div> */}
 
-        <hr className="astro__divider" />
+        {/* <hr className="astro__divider" /> */}
 
         <div className="astro__body">
           <p className="astro__description">
