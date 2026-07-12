@@ -9,9 +9,10 @@ export default function FoodPage() {
         <h1 className="subpage__title">Food</h1>
 
         {/* ---- Intro text (user will replace) ---- */}
-        <div className="food__intro">
-          <p className="food__intro-placeholder">Food text goes here</p>
-        </div>
+      <div className="food__intro">
+  <p className="food__tagline">Simply here to serve.</p>
+  <p className="food__intro-placeholder">My love for food has allowed her to feed people all over the world. I cut my teeth in New York City kitchens cooking for design studios and catering private events. Currently based in Los Angeles, I'm available for all your culinary needs – including private dinners, brand events, catering, postpartum food packages, yoga retreats, & recipe development. Using primarily locally grown and seasonal ingredients, I create beautiful and delicious meals that can accommodate any dietary restrictions or allergies.</p>
+</div>
 
         {/* ---- Main content: clients + photos ---- */}
         <div className="food__content">
