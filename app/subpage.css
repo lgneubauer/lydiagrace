@@ -73,6 +73,7 @@
   width: clamp(140px, 35vw, 200px);
   height: auto;
   object-fit: contain;
+  opacity: 91%;
 }
 
 /* ---- Responsive ---- */
