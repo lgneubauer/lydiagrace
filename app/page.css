@@ -19,7 +19,10 @@
 @media (max-width: 767px) {
   .home {
     align-items: flex-start;
-    padding-top: 2rem;
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
+    padding: 0;
   }
 }
 

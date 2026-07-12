@@ -734,14 +734,15 @@ body.menu-open {
 
 @media (max-width: 767px) {
   .menu-content {
-    padding: 0 2rem 2.5vh;
+    padding: 2vh 2rem 2.5vh;
     justify-content: space-between;
-    min-height: 100dvh;
-    min-height: calc(100vh - 4rem);
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
   }
 
   .menu-content__title {
-    margin-top: 2vh;
+    margin-top: 5vh;
     margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
     max-width: 200px;
     word-spacing: 100vw;

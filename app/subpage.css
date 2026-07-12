@@ -91,33 +91,20 @@
     gap: 0.8rem;
   }
 
-  .subpage__body p {
-    text-align: center;
-  }
-
   .subpage__image {
     margin-top: 2.5rem;
     transform: none !important;
     will-change: auto;
   }
 
-  /* Mobile: center tea text */
-  .tea__description,
+  /* Mobile: center short elements only */
   .tea__subscribe-heading,
   .tea__subscribe-placeholder {
     text-align: center;
   }
 
-  /* Mobile: center yoga text */
   .yoga__schedule-item,
   .yoga__availability {
-    text-align: center;
-  }
-
-  /* Mobile: center astro text */
-  .astro__subtitle-text,
-  .astro__description,
-  .astro__form-intro {
     text-align: center;
   }
 
@@ -129,7 +116,7 @@
 
   /* Mobile: spacing between submit and calendly */
   .astro__cta {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 }
 
