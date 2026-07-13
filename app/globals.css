@@ -55,7 +55,7 @@ ul {
 @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
-  --color-bg: #F9F8F6;
+  --color-bg: #fffefe;
   --color-text-primary:#050200;
   --color-text-secondary: #3a3a3b;
   --font-serif: "Courier Prime", "Courier New", monospace;

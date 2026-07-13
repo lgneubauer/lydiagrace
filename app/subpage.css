@@ -669,6 +669,8 @@
   width: 100%;
   outline: none;
   transition: border-color var(--transition-smooth);
+   box-sizing: border-box;
+  max-width: 100%;
 }
 
 .astro__input:focus {
