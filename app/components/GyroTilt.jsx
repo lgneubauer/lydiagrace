@@ -27,6 +27,25 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
     let baseBeta = null;
     let baseGamma = null;
 
+    // Rotation tracking
+    let currentRotation = 0;
+    let targetRotation = 0;
+    let rotationVelocity = 0;
+    let spinOrigin = 0;
+    let spinDirection = 1;
+    let isSpinning = false;
+
+    // Ambient vertical bob
+    let bobTime = Math.random() * 1000;
+
+    function getSpinProgress() {
+      if (!isSpinning) return 0;
+      const totalSpin = targetRotation - spinOrigin;
+      if (totalSpin === 0) return 0;
+      const progress = (currentRotation - spinOrigin) / totalSpin;
+      return Math.max(0, Math.min(1, progress));
+    }
+
     function handleOrientation(e) {
       if (e.beta === null && e.gamma === null) return;
 
@@ -43,10 +62,10 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
         return;
       }
 
-      // Measure change from baseline, not absolute position
-      const deltaGamma = Math.abs(gamma - baseGamma);
-      const deltaBeta = Math.abs(beta - baseBeta);
-      const movement = deltaGamma + deltaBeta;
+      // Measure change from baseline
+      const deltaGamma = gamma - baseGamma;
+      const deltaBeta = beta - baseBeta;
+      const movement = Math.abs(deltaGamma) + Math.abs(deltaBeta);
       const now = Date.now();
 
       // Only burst on real intentional tilts
@@ -63,6 +82,29 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
 
         targetX = Math.cos(angle) * horizontalDist;
         targetY = Math.sin(angle) * verticalDist;
+
+        // Tilt direction from phone movement
+        const tiltDirection = Math.abs(deltaGamma) > Math.abs(deltaBeta)
+          ? Math.sign(deltaGamma)
+          : Math.sign(deltaBeta);
+
+        const progress = getSpinProgress();
+
+        if (isSpinning && progress > 0.5) {
+          // Past halfway — reverse: finish the circle the short way
+          const remaining = targetRotation - currentRotation;
+          const reverseAmount = (360 - Math.abs(remaining)) * -Math.sign(remaining);
+          spinOrigin = currentRotation;
+          targetRotation = currentRotation + reverseAmount;
+          spinDirection = -spinDirection;
+          rotationVelocity *= 0.1;
+        } else {
+          // Normal spin — full 360 in tilt direction
+          spinOrigin = currentRotation;
+          spinDirection = tiltDirection;
+          targetRotation = currentRotation + tiltDirection * 360;
+          isSpinning = true;
+        }
       }
 
       // Slowly drift baseline toward current position
@@ -71,31 +113,47 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
     }
 
     function animate() {
-      // Slowly return to center
+      // Slowly return position to center
       targetX *= 0.975;
       targetY *= 0.985;
 
-      // Spring force toward target
+      // Spring force toward target position
       velocityX += (targetX - currentX) * 0.025;
       velocityY += (targetY - currentY) * 0.025;
 
-      // Inertia damping
+      // Inertia damping for position
       velocityX *= 0.88;
       velocityY *= 0.88;
 
       currentX += velocityX;
       currentY += velocityY;
 
-      if (el && hasOrientation) {
-        const rotateZ = currentX * 0.3;
-        const rotateX = -currentY * 0.25;
-        const rotateY = currentX * 0.15;
+      // Rotation spring — slow down around halfway
+      const progress = getSpinProgress();
+      const halfwayProximity = 1 - Math.abs(progress - 0.5) * 2; // peaks at 0.5
+      const stiffness = 0.0008 * (1 - halfwayProximity * 0.6); // softer near halfway
+      const damping = 0.92 + halfwayProximity * 0.04; // more damping near halfway
 
+      rotationVelocity += (targetRotation - currentRotation) * stiffness;
+      rotationVelocity *= damping;
+      currentRotation += rotationVelocity;
+
+      // Mark spin as done when close enough
+      if (isSpinning && Math.abs(targetRotation - currentRotation) < 0.5 && Math.abs(rotationVelocity) < 0.1) {
+        isSpinning = false;
+      }
+
+      // Gentle ambient bob — always active, a bit stronger while spinning
+      bobTime += 0.018;
+      const bobBase = Math.sin(bobTime) * 3 + Math.sin(bobTime * 1.7) * 2;
+      const bobStrength = isSpinning ? 1.4 : 0.8;
+      const bobY = bobBase * bobStrength;
+      const bobX = Math.sin(bobTime * 0.7) * 1.5 * bobStrength;
+
+      if (el && hasOrientation) {
         el.style.transform = `
-          translate3d(${currentX}px, ${currentY}px, 0)
-          rotateX(${rotateX}deg)
-          rotateY(${rotateY}deg)
-          rotateZ(${rotateZ}deg)
+          translate3d(${currentX + bobX}px, ${currentY + bobY}px, 0)
+          rotate(${currentRotation}deg)
         `;
       }
 
@@ -162,8 +220,6 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
       className={className}
       style={{
         willChange: isMobile ? "transform" : "auto",
-        transformStyle: "preserve-3d",
-        perspective: "1000px",
       }}
     >
       {children}
