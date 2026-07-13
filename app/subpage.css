@@ -46,7 +46,7 @@
 
 .subpage__body p {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.01em;
@@ -138,7 +138,7 @@
   }
 
   .subpage__body p {
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     line-height: 1.55;
     max-width: 780px;
   }
@@ -157,7 +157,7 @@
 
 .food__tagline {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.01em;
@@ -168,7 +168,7 @@
 
 .food__intro-placeholder {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.01em;
@@ -429,7 +429,7 @@
 
 .tea__description {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
   letter-spacing: 0.01em;
@@ -570,7 +570,7 @@
 
 .astro__subtitle-text {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: 0.05em;
@@ -605,7 +605,7 @@
 
 .astro__description {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
   letter-spacing: 0.01em;
@@ -617,7 +617,7 @@
 
 .astro__form-intro {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.5;
   color: var(--color-text-primary);
@@ -667,10 +667,10 @@
   border-radius: 2px;
   padding: 0.65rem 0.75rem;
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   outline: none;
   transition: border-color var(--transition-smooth);
-   box-sizing: border-box;
-  max-width: 100%;
 }
 
 .astro__input:focus {
