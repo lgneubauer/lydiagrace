@@ -23,7 +23,7 @@ export default async function YogaPage({ searchParams }) {
         <div className="yoga__schedule">
           <h2 className="yoga__schedule-heading">Schedule</h2>
           <ul className="yoga__schedule-list">
-            <li className="yoga__schedule-item">Schedule goes here</li>
+            <li className="yoga__schedule-item">[INSERT SCHEDULE HERE]</li>
           </ul>
         </div>
 
