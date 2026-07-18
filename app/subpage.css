@@ -93,6 +93,10 @@
     gap: 0.8rem;
   }
 
+  .subpage__body p {
+    font-size: 1rem;
+  }
+
   .subpage__image {
     margin-top: 2.5rem;
     transform: none !important;
@@ -310,6 +314,11 @@
 /* ---- Food: Mobile ---- */
 
 @media (max-width: 767px) {
+  .food__tagline,
+  .food__intro-placeholder {
+    font-size: 1rem;
+  }
+
   .food__form {
     max-width: 260px;
     gap: 0.8rem;
@@ -473,6 +482,10 @@
 }
 
 @media (max-width: 767px) {
+  .tea__description {
+    font-size: 1rem;
+  }
+
   .tea__highlight {
     font-size: 0.7rem;
     letter-spacing: 0.06em;
@@ -648,6 +661,11 @@
   border-color: #cf2a2a;
 }
 
+.astro__input[type="date"],
+.astro__input[type="time"] {
+  min-height: 2.5rem;
+}
+
 .astro__textarea {
   resize: vertical;
   min-height: 80px;
@@ -710,7 +728,7 @@
 
 .astro__cta-details {
   font-family: var(--font-serif);
-  font-size: clamp(0.82rem, 1.8vw, 0.95rem);
+  font-size: clamp(0.92rem, 1.8vw, 0.95rem);
   font-weight: 400;
   color: var(--color-text-secondary);
   letter-spacing: 0.02em;
@@ -718,6 +736,11 @@
 }
 
 @media (max-width: 767px) {
+  .astro__description,
+  .astro__form-intro {
+    font-size: 1rem;
+  }
+
   .astro__form {
     max-width: 260px;
     margin: 0 auto;
