@@ -101,7 +101,8 @@
 
   .subpage__body p {
     font-size: 1rem;
-   word-spacing: -0.35em
+    word-spacing: -0.2em;
+    letter-spacing: 0.02em;
   }
 
   .subpage__image {
@@ -351,7 +352,8 @@
   .privacy__intro,
   .privacy__text {
     font-size: 1rem;
-   word-spacing: -0.35em
+    word-spacing: -0.2em;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -556,10 +558,14 @@
 /* ---- Food: Mobile ---- */
 
 @media (max-width: 767px) {
-  .food__tagline,
+  .food__tagline {
+    font-size: 1rem;
+  }
+
   .food__intro-placeholder {
     font-size: 1rem;
-word-spacing: -0.35em
+    word-spacing: -0.2em;
+    letter-spacing: 0.02em;
   }
 
   .food__form {
@@ -746,7 +752,8 @@ word-spacing: -0.35em
 @media (max-width: 767px) {
   .tea__description {
     font-size: 1rem;
-  word-spacing: -0.35em
+    word-spacing: -0.2em;
+    letter-spacing: 0.02em;
   }
 
   .tea__highlight {
@@ -1019,7 +1026,8 @@ word-spacing: -0.35em
   .astro__description,
   .astro__form-intro {
     font-size: 1rem;
-word-spacing: -0.35em
+    word-spacing: -0.2em;
+    letter-spacing: 0.02em;
   }
 
   .astro__form {
