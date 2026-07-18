@@ -445,7 +445,7 @@
 
 .food__clients-item {
   font-family: var(--font-serif);
-  font-size: clamp(0.8rem, 2vw, 1.05rem);
+ font-size: clamp(0.8rem, 2vw, 0.9rem);
   font-weight: 400;
   line-height: 1.5;
   color: var(--color-text-primary);
