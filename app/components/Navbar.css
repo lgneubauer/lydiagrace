@@ -86,6 +86,94 @@
 }
 
 /* =============================================
+   GYRO WAVE — letter cascade on tilt
+   ============================================= */
+
+.gyro-wave {
+  display: inline;
+}
+
+.gyro-wave__char {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* =============================================
+   FLOAT ANIMATIONS FOR PNGs
+   ============================================= */
+
+@keyframes float-png {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(1.5deg);
+  }
+  50% {
+    transform: translateY(-2px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-7px) rotate(0.5deg);
+  }
+}
+
+@keyframes float-png-subtle {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-2px) rotate(0.5deg);
+  }
+  66% {
+    transform: translateY(-3px) rotate(-0.3deg);
+  }
+}
+
+@keyframes float-png-astro {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  8% {
+    transform: translateY(-10px) rotate(35deg);
+  }
+  16% {
+    transform: translateY(-2px) rotate(65deg);
+  }
+  25% {
+    transform: translateY(-12px) rotate(95deg);
+  }
+  33% {
+    transform: translateY(-3px) rotate(130deg);
+  }
+  42% {
+    transform: translateY(-9px) rotate(160deg);
+  }
+  50% {
+    transform: translateY(-1px) rotate(185deg);
+  }
+  58% {
+    transform: translateY(-11px) rotate(220deg);
+  }
+  67% {
+    transform: translateY(-3px) rotate(250deg);
+  }
+  75% {
+    transform: translateY(-13px) rotate(280deg);
+  }
+  83% {
+    transform: translateY(-2px) rotate(315deg);
+  }
+  92% {
+    transform: translateY(-8px) rotate(345deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
+}
+
+/* =============================================
    DROPDOWN
    Mobile (<768px): fullscreen
    iPad & desktop (>=768px): corner panel
@@ -374,11 +462,34 @@
   }
 }
 
+/* ---- Dropdown nav images with float animation ---- */
+
 .dropdown__nav-img {
   height: 80px;
   width: 90px;
   object-fit: contain;
   flex-shrink: 0;
+  animation: float-png 7s ease-in-out infinite;
+}
+
+/* Food — subtle float */
+.dropdown__nav-item:nth-child(1) .dropdown__nav-img {
+  animation: float-png-subtle 9s ease-in-out infinite;
+}
+.dropdown__nav-item:nth-child(2) .dropdown__nav-img {
+  animation-delay: -1.8s;
+}
+.dropdown__nav-item:nth-child(3) .dropdown__nav-img {
+  animation-delay: -3.5s;
+}
+/* Yoga — subtle float */
+.dropdown__nav-item:nth-child(4) .dropdown__nav-img {
+  animation: float-png-subtle 10s ease-in-out infinite;
+}
+
+/* Astro gets slow bouncy 360 rotation */
+.dropdown__nav-img--astro {
+  animation: float-png-astro 32s ease-in-out infinite;
 }
 
 @media (min-width: 768px) {
@@ -483,7 +594,7 @@ body.menu-open {
    HOME PAGE
    ============================================= */
 
-/* ---- Floating animation (desktop only) ---- */
+/* ---- Floating animation (desktop sketches only) ---- */
 
 @keyframes float-sketch-0 {
   0% {
@@ -730,7 +841,7 @@ body.menu-open {
   opacity: 0.5;
 }
 
-/* ---- Mobile: dropdown-style list, NO animations ---- */
+/* ---- Mobile: dropdown-style list, PNGs with float animation ---- */
 
 @media (max-width: 767px) {
   .menu-content {
@@ -797,13 +908,34 @@ body.menu-open {
     display: none;
   }
 
-  /* Show PNGs on mobile — static, no animation */
+  /* Show PNGs on mobile — with float animation */
   .menu-content__nav-img {
     display: block;
     height: clamp(50px, 10vh, 80px);
     width: clamp(56px, 11vh, 90px);
     object-fit: contain;
     flex-shrink: 0;
+    animation: float-png 7s ease-in-out infinite;
+  }
+
+  /* Food — subtle float */
+  .menu-content__nav-item:nth-child(1) .menu-content__nav-img {
+    animation: float-png-subtle 9s ease-in-out infinite;
+  }
+  .menu-content__nav-item:nth-child(2) .menu-content__nav-img {
+    animation-delay: -1.8s;
+  }
+  .menu-content__nav-item:nth-child(3) .menu-content__nav-img {
+    animation-delay: -3.5s;
+  }
+  /* Yoga — subtle float */
+  .menu-content__nav-item:nth-child(4) .menu-content__nav-img {
+    animation: float-png-subtle 10s ease-in-out infinite;
+  }
+
+  /* Astro gets slow bouncy 360 rotation */
+  .menu-content__nav-img--astro {
+    animation: float-png-astro 32s ease-in-out infinite;
   }
 
   .menu-content__socials {

@@ -4,8 +4,23 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconInstagram, IconTikTok, IconYouTube, IconSubstack } from "./Icons";
-import GyroTilt from "./GyroTilt";
+import GyroWave from "./GyroWave";
 import "./Navbar.css";
+
+function useMobile(breakpoint = 767) {
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    setMobile(window.innerWidth <= breakpoint);
+  }, [breakpoint]);
+  return mobile;
+}
+
+function NavLabel({ className, children, mobile }) {
+  if (mobile) {
+    return <GyroWave className={className}>{children}</GyroWave>;
+  }
+  return <span className={className}>{children}</span>;
+}
 
 const NAV_ITEMS = [
   { label: "Food", href: "/food", position: "food", img: "/food.png" },
@@ -37,6 +52,8 @@ const DROPDOWN_ITEMS = [
 
 /* Home page — single nav, CSS handles mobile vs desktop */
 export function MenuContent({ onNavigate }) {
+  const mobile = useMobile();
+
   return (
     <div className="menu-content">
       <h1 className="menu-content__title">Lydia Grace</h1>
@@ -59,15 +76,19 @@ export function MenuContent({ onNavigate }) {
             className={`menu-content__nav-item menu-content__nav-item--${item.position}`}
             onClick={onNavigate}
           >
-            <span className="menu-content__nav-label">{item.label}</span>
+            <NavLabel className="menu-content__nav-label" mobile={mobile}>
+              {item.label}
+            </NavLabel>
             <img
               src={item.img}
               alt=""
               className={`menu-content__nav-sketch menu-content__nav-sketch--delay${i}`}
             />
-            <GyroTilt intensity={12 + i * 3}>
-              <img src={item.img} alt="" className="menu-content__nav-img" />
-            </GyroTilt>
+            <img
+              src={item.img}
+              alt=""
+              className={`menu-content__nav-img${item.position === "astro" ? " menu-content__nav-img--astro" : ""}`}
+            />
           </Link>
         ))}
       </nav>
@@ -117,6 +138,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const dropdownRef = useRef(null);
+  const mobile = useMobile();
 
   const handleClose = useCallback(() => {
     setClosing(true);
@@ -218,11 +240,15 @@ export default function Navbar() {
                 className="dropdown__nav-item"
                 onClick={handleClose}
               >
-                <span className="dropdown__nav-label">{item.label}</span>
+                <NavLabel className="dropdown__nav-label" mobile={mobile}>
+                  {item.label}
+                </NavLabel>
 
-                <GyroTilt intensity={12 + i * 3}>
-                  <img src={item.img} alt="" className="dropdown__nav-img" />
-                </GyroTilt>
+                <img
+                  src={item.img}
+                  alt=""
+                  className={`dropdown__nav-img${item.img.includes("astro") ? " dropdown__nav-img--astro" : ""}`}
+                />
               </Link>
             ))}
           </nav>
