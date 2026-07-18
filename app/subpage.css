@@ -103,6 +103,7 @@
 
   .subpage__body p {
     font-size: 1rem;
+    word-spacing: -0.025em;
   }
 
   .subpage__image {
