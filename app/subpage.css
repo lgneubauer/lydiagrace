@@ -53,7 +53,9 @@
   line-height: 1.5;
   letter-spacing: 0.01em;
   color: var(--color-text-primary);
-  text-align: left;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
   text-wrap: pretty;
   overflow-wrap: break-word;
   white-space: normal;
@@ -133,6 +135,9 @@
     font-size: 0.9rem;
     line-height: 1.55;
     max-width: 780px;
+    text-align: left;
+    hyphens: none;
+    -webkit-hyphens: none;
   }
 }
 
@@ -302,6 +307,9 @@
   line-height: 1.6;
   color: var(--color-text-primary);
   margin-bottom: 2rem;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 .privacy__heading {
@@ -321,6 +329,9 @@
   line-height: 1.6;
   color: var(--color-text-primary);
   margin-bottom: 1rem;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 .privacy__email {
@@ -344,6 +355,15 @@
   .privacy__intro,
   .privacy__text {
     font-size: 1rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .privacy__intro,
+  .privacy__text {
+    text-align: left;
+    hyphens: none;
+    -webkit-hyphens: none;
   }
 }
 
@@ -376,6 +396,9 @@
   line-height: 1.5;
   letter-spacing: 0.01em;
   color: var(--color-text-primary);
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
   text-wrap: pretty;
 }
 
@@ -601,6 +624,12 @@
     font-size: 0.9rem;
   }
 
+  .food__intro-placeholder {
+    text-align: left;
+    hyphens: none;
+    -webkit-hyphens: none;
+  }
+
   .food__intro {
     max-width: 680px;
     margin-bottom: 5rem;
@@ -652,6 +681,9 @@
   line-height: 1.6;
   letter-spacing: 0.01em;
   color: var(--color-text-primary);
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
   text-wrap: pretty;
 }
 
@@ -712,7 +744,7 @@
   }
 
   .tea__highlight {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     letter-spacing: 0.06em;
     text-align: center;
   }
@@ -761,6 +793,9 @@
 @media (min-width: 1025px) {
   .tea__description {
     font-size: 0.9rem;
+    text-align: left;
+    hyphens: none;
+    -webkit-hyphens: none;
   }
 
   .tea__content {
@@ -829,6 +864,9 @@
   line-height: 1.6;
   letter-spacing: 0.01em;
   color: var(--color-text-primary);
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
   text-wrap: pretty;
 }
 
@@ -839,6 +877,9 @@
   line-height: 1.5;
   color: var(--color-text-primary);
   margin-bottom: 1.5rem;
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
   text-wrap: pretty;
 }
 
@@ -975,7 +1016,7 @@
   }
 
   .astro__form {
-    max-width: 260px;
+    max-width: 360px;
     margin: 0 auto;
   }
 
@@ -1025,6 +1066,9 @@
   .astro__description,
   .astro__form-intro {
     font-size: 0.9rem;
+    text-align: left;
+    hyphens: none;
+    -webkit-hyphens: none;
   }
 
   .astro__body {

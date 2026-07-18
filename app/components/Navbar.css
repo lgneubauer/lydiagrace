@@ -499,6 +499,12 @@
   }
 }
 
+@media (min-width: 1025px) {
+  .dropdown__nav-img {
+    animation: none;
+  }
+}
+
 /* ---- Dropdown socials (all breakpoints) ---- */
 
 .dropdown__socials {
