@@ -2,75 +2,7 @@
 
 import { useEffect, useRef, useMemo } from "react";
 import { usePathname } from "next/navigation";
-
-// Shared across all instances — request permission only once
-let gyroPermission = "pending"; // "pending" | "granted" | "denied"
-let gyroListeners = [];
-
-function notifyListeners(e) {
-  for (const fn of gyroListeners) fn(e);
-}
-
-function addGyroListener(fn) {
-  gyroListeners.push(fn);
-  if (gyroListeners.length === 1) {
-    startGlobalGyro();
-  }
-  return () => {
-    gyroListeners = gyroListeners.filter((f) => f !== fn);
-    if (gyroListeners.length === 0) {
-      window.removeEventListener("deviceorientation", notifyListeners);
-    }
-  };
-}
-
-function startGlobalGyro() {
-  if (gyroPermission === "granted") {
-    window.addEventListener("deviceorientation", notifyListeners);
-    return;
-  }
-
-  if (
-    typeof DeviceOrientationEvent !== "undefined" &&
-    typeof DeviceOrientationEvent.requestPermission === "function"
-  ) {
-    if (gyroPermission === "pending") {
-      gyroPermission = "denied"; // prevent re-entry
-      DeviceOrientationEvent.requestPermission()
-        .then((state) => {
-          if (state === "granted") {
-            gyroPermission = "granted";
-            window.addEventListener("deviceorientation", notifyListeners);
-          } else {
-            waitForTouch();
-          }
-        })
-        .catch(() => {
-          waitForTouch();
-        });
-    }
-  } else {
-    gyroPermission = "granted";
-    window.addEventListener("deviceorientation", notifyListeners);
-  }
-}
-
-function waitForTouch() {
-  document.addEventListener(
-    "touchstart",
-    function onTouch() {
-      DeviceOrientationEvent.requestPermission()
-        .then((s) => {
-          if (s === "granted") {
-            gyroPermission = "granted";
-            window.addEventListener("deviceorientation", notifyListeners);
-          }
-        })
-        .catch(console.error);
-    },
-    { once: true },
-  );
-}
+import { addGyroListener } from "./gyro";
 
 export default function GyroWave({ children, className }) {
   const containerRef = useRef(null);
@@ -136,7 +68,6 @@ export default function GyroWave({ children, className }) {
 
         const tiltLeft = deltaGamma < 0;
 
-        // Stagger impulses across characters — add energy, never reset
         for (let i = 0; i < totalVisible; i++) {
           const base = tiltLeft
             ? (totalVisible - 1 - i) * 70

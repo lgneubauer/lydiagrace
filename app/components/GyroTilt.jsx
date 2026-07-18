@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { addGyroListener } from "./gyro";
 
 export default function GyroTilt({ children, className, intensity = 5 }) {
   const ref = useRef(null);
@@ -9,10 +10,11 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    if (window.innerWidth > 767) return;
+    setIsMobile(true);
+
     const el = ref.current;
     if (!el) return;
-
-    if (window.innerWidth > 767) return;
 
     let currentX = 0;
     let currentY = 0;
@@ -20,23 +22,22 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
     let velocityY = 0;
     let targetX = 0;
     let targetY = 0;
-    let rafId = null;
-    let hasOrientation = false;
-    let lastBurst = 0;
-    let baseBeta = null;
-    let baseGamma = null;
 
     let currentRotation = 0;
     let targetRotation = 0;
     let rotationVelocity = 0;
 
     let bobTime = Math.random() * 1000;
+    let rafId = null;
+    let hasOrientation = false;
+
+    let baseBeta = null;
+    let baseGamma = null;
+    let lastBurst = 0;
 
     function handleOrientation(e) {
       if (e.beta === null && e.gamma === null) return;
-
       hasOrientation = true;
-      setIsMobile(true);
 
       const beta = e.beta || 0;
       const gamma = e.gamma || 0;
@@ -48,38 +49,32 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
       }
 
       const deltaGamma = gamma - baseGamma;
-      const deltaBeta = beta - baseBeta;
-      const movement = Math.abs(deltaGamma) + Math.abs(deltaBeta);
+      const movement = Math.abs(deltaGamma) + Math.abs(beta - baseBeta);
       const now = Date.now();
 
       if (movement > 25 && now - lastBurst > 600) {
         lastBurst = now;
-
         baseBeta = beta;
         baseGamma = gamma;
 
-        const tiltDir = Math.sign(deltaGamma) || 1;
-        const tiltingLeft = tiltDir < 0;
+        const tiltLeft = deltaGamma < 0;
+        const rotSign = Math.random() > 0.5 ? 1 : -1;
+        const rotAmount = 3 + Math.random() * 5;
 
-        if (tiltingLeft) {
-          // All float far left — mostly horizontal, tiny vertical variance
-          const dist = intensity * (4 + Math.random() * 4);
-          const verticalDrift = (Math.random() - 0.5) * intensity * 0.3;
-          targetX = -dist;
-          targetY = verticalDrift;
-
-          const rotDir = Math.random() > 0.5 ? 1 : -1;
-          targetRotation = currentRotation + rotDir * (30 + Math.random() * 70);
+        if (tiltLeft) {
+          // Drift left, rotate toward bottom-left or top-left
+          targetX += -(intensity * (0.9 + Math.random() * 1));
+          targetY += rotSign > 0
+            ? -(intensity * (2.5 + Math.random() * 2))      // top-left
+            : intensity * (1 + Math.random() * 1.2);         // bottom-left
+          targetRotation += -(rotAmount);
         } else {
-          // Right tilt — float slightly right, less rotation
-          const spread = (Math.random() - 0.5) * (Math.PI / 2);
-          const angle = 0 + spread;
-          const dist = intensity * (0.15 + Math.random() * 0.4);
-          targetX = Math.cos(angle) * dist;
-          targetY = Math.sin(angle) * dist;
-
-          const rotDir = Math.random() > 0.5 ? 1 : -1;
-          targetRotation = currentRotation + rotDir * (2 + Math.random() * 8);
+          // Drift right, rotate toward top-right or bottom-right
+          targetX += intensity * (0.9 + Math.random() * 1);
+          targetY += rotSign > 0
+            ? -(intensity * (2.5 + Math.random() * 2))      // top-right
+            : intensity * (1 + Math.random() * 1.2);         // bottom-right
+          targetRotation += rotAmount;
         }
       }
 
@@ -88,91 +83,46 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
     }
 
     function animate() {
-      // Slow drift back
-      targetX *= 0.997;
-      targetY *= 0.998;
+      // Slow drift back to center
+      targetX *= 0.996;
+      targetY *= 0.996;
+      targetRotation *= 0.996;
 
       // Soft position spring
-      velocityX += (targetX - currentX) * 0.008;
-      velocityY += (targetY - currentY) * 0.008;
-      velocityX *= 0.96;
-      velocityY *= 0.96;
+      velocityX += (targetX - currentX) * 0.003;
+      velocityY += (targetY - currentY) * 0.003;
+      velocityX *= 0.985;
+      velocityY *= 0.985;
       currentX += velocityX;
       currentY += velocityY;
 
       // Soft rotation spring
-      targetRotation *= 0.998;
-      rotationVelocity += (targetRotation - currentRotation) * 0.006;
-      rotationVelocity *= 0.96;
+      rotationVelocity += (targetRotation - currentRotation) * 0.003;
+      rotationVelocity *= 0.985;
       currentRotation += rotationVelocity;
 
-      // Gentle ambient bob
-      bobTime += 0.008;
-      const bobBase = Math.sin(bobTime) * 3 + Math.sin(bobTime * 1.3) * 2;
-      const bobStrength = 0.6;
-      const bobY = bobBase * bobStrength;
-      const bobX = Math.sin(bobTime * 0.5) * 1.5 * bobStrength;
+      // Smooth sine float
+      bobTime += 0.0025;
+      const bobY = Math.sin(bobTime) * 5 + Math.sin(bobTime * 0.7) * 2;
+      const bobX = Math.sin(bobTime * 0.4) * 1.5;
 
       if (el && hasOrientation) {
         el.style.transform = `
-          translate3d(${currentX + bobX}px, ${currentY + bobY}px, 0)
-          rotate(${currentRotation}deg)
+          translate3d(${(currentX + bobX).toFixed(1)}px, ${(currentY + bobY).toFixed(1)}px, 0)
+          rotate(${currentRotation.toFixed(1)}deg)
         `;
       }
 
       rafId = requestAnimationFrame(animate);
     }
 
-    function startListening() {
-      window.addEventListener("deviceorientation", handleOrientation);
-      rafId = requestAnimationFrame(animate);
-    }
-
-    if (
-      typeof DeviceOrientationEvent !== "undefined" &&
-      typeof DeviceOrientationEvent.requestPermission === "function"
-    ) {
-      DeviceOrientationEvent.requestPermission()
-        .then((state) => {
-          if (state === "granted") {
-            startListening();
-          } else {
-            document.addEventListener(
-              "touchstart",
-              function requestOnTouch() {
-                DeviceOrientationEvent.requestPermission()
-                  .then((s) => {
-                    if (s === "granted") startListening();
-                  })
-                  .catch(console.error);
-              },
-              { once: true },
-            );
-          }
-        })
-        .catch(() => {
-          document.addEventListener(
-            "touchstart",
-            function requestOnTouch() {
-              DeviceOrientationEvent.requestPermission()
-                .then((s) => {
-                  if (s === "granted") startListening();
-                })
-                .catch(console.error);
-            },
-            { once: true },
-          );
-        });
-    } else {
-      startListening();
-    }
+    const removeListener = addGyroListener(handleOrientation);
+    rafId = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener("deviceorientation", handleOrientation);
+      removeListener();
       cancelAnimationFrame(rafId);
-      if (el) {
-        el.style.transform = "";
-      }
+      if (el) el.style.transform = "";
     };
   }, [pathname, intensity]);
 

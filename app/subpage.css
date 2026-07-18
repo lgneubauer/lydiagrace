@@ -38,13 +38,7 @@
 
 /* ---- Body copy ---- */
 
-.subpage__body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-}
+/* ---- Body copy ---- */
 
 .subpage__body p {
   font-family: var(--font-serif);
@@ -71,6 +65,8 @@
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   width: 100%;
+  position: relative;
+  z-index: 0;
 }
 
 .subpage__image img {
@@ -78,6 +74,16 @@
   height: auto;
   object-fit: contain;
   opacity: 91%;
+}
+
+.subpage__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 /* ---- Subpage: Mobile ---- */
@@ -100,9 +106,7 @@
   }
 
   .subpage__image {
-    margin-top: 2.5rem;
-    transform: none !important;
-    will-change: auto;
+    margin-top: 0.5rem;
   }
 }
 

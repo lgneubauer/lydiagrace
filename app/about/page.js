@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ScrollTilt from "../components/ScrollTilt";
+import GyroTilt from "../components/GyroTilt";
 import Footer from "../components/Footer";
 import { submitAbout } from "./actions";
 import "../subpage.css";
@@ -28,7 +28,7 @@ export default async function AboutPage({ searchParams }) {
           </p>
         </div>
 
-        <ScrollTilt className="subpage__image">
+        <GyroTilt className="subpage__image" intensity={5}>
           <Image
             src="/about-img.png"
             alt="Abstract painted illustration — blue brushstroke, red circle, and yellow dash"
@@ -36,7 +36,7 @@ export default async function AboutPage({ searchParams }) {
             height={300}
             priority
           />
-        </ScrollTilt>
+        </GyroTilt>
 
         <div className="subpage__body">
           <p>
