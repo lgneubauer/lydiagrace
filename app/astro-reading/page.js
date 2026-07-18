@@ -1,5 +1,6 @@
 import "../subpage.css";
 import { submitAstro } from "./actions";
+import Footer from "../components/Footer";
 
 export const metadata = { title: "Astro Reading — Lydia Grace" };
 
@@ -132,6 +133,8 @@ export default async function AstroReadingPage({ searchParams }) {
       </div>
 
       {sent && <div className="toast">Email received</div>}
+
+      <Footer />
     </div>
   );
 }

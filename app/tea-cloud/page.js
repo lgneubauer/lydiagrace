@@ -1,4 +1,5 @@
 import "../subpage.css";
+import Footer from "../components/Footer";
 
 export const metadata = { title: "Tea Cloud — Lydia Grace" };
 
@@ -8,9 +9,7 @@ export default function TeaCloudPage() {
       <div className="subpage__content">
         <h1 className="subpage__title">Tea Cloud</h1>
 
-        {/* ---- Main content: text + photos ---- */}
         <div className="tea__content">
-          {/* Left column: copy */}
           <div className="tea__text">
             <p className="tea__description">
               Tea Cloud is our monthly pop-up from Tommy &amp; me.
@@ -30,7 +29,6 @@ export default function TeaCloudPage() {
             </p>
           </div>
 
-          {/* Right column: photo placeholders */}
           <div className="tea__photos">
             <div
               className="tea__photo"
@@ -43,12 +41,13 @@ export default function TeaCloudPage() {
           </div>
         </div>
 
-        {/* ---- Email subscription placeholder ---- */}
-        <div className="tea__subscribe">
+        {/* <div className="tea__subscribe">
           <p className="tea__subscribe-heading">Subscribe for updates</p>
           <p className="tea__subscribe-placeholder">Form goes here</p>
-        </div>
+        </div> */}
       </div>
+
+      <Footer />
     </div>
   );
 }

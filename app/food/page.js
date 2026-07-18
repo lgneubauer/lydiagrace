@@ -1,5 +1,6 @@
 import "../subpage.css";
 import { submitFood } from "./actions";
+import Footer from "../components/Footer";
 
 export const metadata = { title: "Food — Lydia Grace" };
 
@@ -97,6 +98,8 @@ export default async function FoodPage({ searchParams }) {
       </div>
 
       {sent && <div className="toast">Email received</div>}
+
+      <Footer />
     </div>
   );
 }

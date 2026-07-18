@@ -1,5 +1,6 @@
 import "../subpage.css";
 import { submitYoga } from "./actions";
+import Footer from "../components/Footer";
 
 export const metadata = { title: "Yoga — Lydia Grace" };
 
@@ -45,7 +46,6 @@ export default async function YogaPage({ searchParams }) {
                 required
               />
             </div>
-
             <div className="yoga__field">
               <input
                 className="yoga__input"
@@ -55,7 +55,6 @@ export default async function YogaPage({ searchParams }) {
                 required
               />
             </div>
-
             <div className="yoga__field">
               <textarea
                 className="yoga__input yoga__textarea"
@@ -65,7 +64,6 @@ export default async function YogaPage({ searchParams }) {
                 required
               />
             </div>
-
             <button className="yoga__submit" type="submit">
               Send
             </button>
@@ -74,6 +72,8 @@ export default async function YogaPage({ searchParams }) {
       </div>
 
       {sent && <div className="toast">Email received</div>}
+
+      <Footer />
     </div>
   );
 }
