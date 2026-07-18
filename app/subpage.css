@@ -394,8 +394,6 @@
    TEA CLOUD PAGE
    ============================================= */
 
-/* ---- Content: text + photos side by side ---- */
-
 .tea__content {
   display: flex;
   flex-direction: column;
@@ -404,8 +402,6 @@
   width: 100%;
   margin-bottom: 3rem;
 }
-
-/* ---- Text ---- */
 
 .tea__text {
   flex: 1;
@@ -437,8 +433,6 @@
   white-space: nowrap;
 }
 
-/* ---- Photos ---- */
-
 .tea__photos {
   flex: 1;
   min-width: 0;
@@ -453,8 +447,6 @@
   background-color: #d5d2ca;
   border-radius: 2px;
 }
-
-/* ---- Email subscription ---- */
 
 .tea__subscribe {
   width: 100%;
@@ -480,8 +472,6 @@
   letter-spacing: 0.08em;
 }
 
-/* ---- Tea: Mobile ---- */
-
 @media (max-width: 767px) {
   .tea__highlight {
     font-size: 0.7rem;
@@ -498,8 +488,6 @@
     text-align: center;
   }
 }
-
-/* ---- Tea: Tablet ---- */
 
 @media (min-width: 768px) {
   .tea__content {
@@ -528,8 +516,6 @@
   }
 }
 
-/* ---- Tea: Desktop ---- */
-
 @media (min-width: 1025px) {
   .tea__content {
     gap: 5rem;
@@ -554,8 +540,6 @@
    ASTRO READING PAGE
    ============================================= */
 
-/* ---- Subtitle + price ---- */
-
 .astro__subtitle {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -579,8 +563,6 @@
   letter-spacing: 0.08em;
 }
 
-/* ---- Divider ---- */
-
 .astro__divider {
   width: 60%;
   max-width: 280px;
@@ -588,8 +570,6 @@
   border-top: 1.5px solid #c9a84c;
   margin: 0 auto 2rem;
 }
-
-/* ---- Body description ---- */
 
 .astro__body {
   width: 100%;
@@ -605,8 +585,6 @@
   color: var(--color-text-primary);
   text-wrap: pretty;
 }
-
-/* ---- Form ---- */
 
 .astro__form-intro {
   font-family: var(--font-serif);
@@ -696,8 +674,6 @@
   color: var(--color-bg);
 }
 
-/* ---- CTA / Calendly ---- */
-
 .astro__cta {
   text-align: center;
   width: 100%;
@@ -741,8 +717,6 @@
   margin-top: 0.4rem;
 }
 
-/* ---- Astro: Mobile ---- */
-
 @media (max-width: 767px) {
   .astro__form {
     max-width: 260px;
@@ -753,8 +727,6 @@
     margin-top: 1rem;
   }
 }
-
-/* ---- Astro: Tablet ---- */
 
 @media (min-width: 768px) {
   .astro__subtitle {
@@ -778,8 +750,6 @@
   }
 }
 
-/* ---- Astro: Desktop ---- */
-
 @media (min-width: 1025px) {
   .astro__body {
     max-width: 680px;
@@ -800,8 +770,6 @@
 /* =============================================
    YOGA PAGE
    ============================================= */
-
-/* ---- Schedule ---- */
 
 .yoga__schedule {
   width: 100%;
@@ -838,8 +806,6 @@
   letter-spacing: 0.02em;
 }
 
-/* ---- Availability ---- */
-
 .yoga__availability {
   font-family: var(--font-serif);
   font-size: clamp(0.9rem, 2vw, 1.05rem);
@@ -851,8 +817,6 @@
   margin-top: 2rem;
   margin-bottom: 2.5rem;
 }
-
-/* ---- Contact ---- */
 
 .yoga__contact {
   width: 100%;
@@ -869,8 +833,6 @@
   text-align: center;
   margin-bottom: 1.2rem;
 }
-
-/* ---- Form ---- */
 
 .yoga__form {
   display: flex;
@@ -936,8 +898,6 @@
   color: var(--color-bg);
 }
 
-/* ---- Yoga: Mobile ---- */
-
 @media (max-width: 767px) {
   .yoga__schedule-item,
   .yoga__availability {
@@ -970,5 +930,42 @@
   .yoga__submit {
     font-size: 0.85rem;
     padding: 0.5rem 1.8rem;
+  }
+}
+
+/* =============================================
+   TOAST
+   ============================================= */
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+  background-color: #cf2a2a;
+  padding: 0.65rem 1.8rem;
+  border-radius: 50px;
+  animation: toast-fade 3s ease forwards;
+  z-index: 1000;
+}
+
+@keyframes toast-fade {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

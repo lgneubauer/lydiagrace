@@ -15,7 +15,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata = {
   title: "LYDIA GRACE",
   description: "Lydia Grace",
-   icons: {
+  icons: {
     icon: "/Food.png",
   },
 };

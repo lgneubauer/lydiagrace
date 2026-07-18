@@ -1,8 +1,11 @@
 import "../subpage.css";
+import { submitYoga } from "./actions";
 
 export const metadata = { title: "Yoga — Lydia Grace" };
 
-export default function YogaPage() {
+export default async function YogaPage({ searchParams }) {
+  const { sent } = await searchParams;
+
   return (
     <div className="subpage">
       <div className="subpage__content">
@@ -16,7 +19,6 @@ export default function YogaPage() {
           </p>
         </div>
 
-        {/* ---- Schedule ---- */}
         <div className="yoga__schedule">
           <h2 className="yoga__schedule-heading">Schedule</h2>
           <ul className="yoga__schedule-list">
@@ -29,11 +31,10 @@ export default function YogaPage() {
         <div className="yoga__contact">
           <p className="yoga__contact-label">Email</p>
 
-          {/* Replace YOUR_FORM_ID with your Formspree form ID */}
           <form
             className="yoga__form"
-            action="https://formspree.io/f/YOUR_FORM_ID"
-            method="POST"
+            action={submitYoga}
+            key={sent ? "sent" : "fresh"}
           >
             <div className="yoga__field">
               <input
@@ -71,6 +72,8 @@ export default function YogaPage() {
           </form>
         </div>
       </div>
+
+      {sent && <div className="toast">Email received</div>}
     </div>
   );
 }

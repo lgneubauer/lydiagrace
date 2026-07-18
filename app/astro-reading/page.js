@@ -1,21 +1,15 @@
 import "../subpage.css";
+import { submitAstro } from "./actions";
 
 export const metadata = { title: "Astro Reading — Lydia Grace" };
 
-export default function AstroReadingPage() {
+export default async function AstroReadingPage({ searchParams }) {
+  const { sent } = await searchParams;
+
   return (
     <div className="subpage">
       <div className="subpage__content">
         <h1 className="subpage__title">Big 3 Read</h1>
-
-        {/* <div className="astro__subtitle">
-          <p className="astro__subtitle-text">
-            Natal Chart Reading — 20 minutes
-          </p>
-          <p className="astro__price">$111</p>
-        </div> */}
-
-        {/* <hr className="astro__divider" /> */}
 
         <div className="astro__body">
           <p className="astro__description">
@@ -30,11 +24,10 @@ export default function AstroReadingPage() {
           Enter your information below and schedule your reading.
         </p>
 
-        {/* Replace YOUR_FORM_ID with your Formspree form ID */}
         <form
           className="astro__form"
-          action="https://formspree.io/f/YOUR_FORM_ID"
-          method="POST"
+          action={submitAstro}
+          key={sent ? "sent" : "fresh"}
         >
           <div className="astro__field">
             <label className="astro__label" htmlFor="astro-name">
@@ -45,6 +38,19 @@ export default function AstroReadingPage() {
               type="text"
               id="astro-name"
               name="name"
+              required
+            />
+          </div>
+
+          <div className="astro__field">
+            <label className="astro__label" htmlFor="astro-email">
+              Email
+            </label>
+            <input
+              className="astro__input"
+              type="email"
+              id="astro-email"
+              name="email"
               required
             />
           </div>
@@ -124,6 +130,8 @@ export default function AstroReadingPage() {
           </p>
         </div>
       </div>
+
+      {sent && <div className="toast">Email received</div>}
     </div>
   );
 }
