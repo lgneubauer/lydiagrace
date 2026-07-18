@@ -101,7 +101,7 @@
 
   .subpage__body p {
     font-size: 1rem;
-    word-spacing: -0.25em;
+   word-spacing: -0.35em
   }
 
   .subpage__image {
@@ -351,7 +351,7 @@
   .privacy__intro,
   .privacy__text {
     font-size: 1rem;
-    word-spacing: -0.25em;
+   word-spacing: -0.35em
   }
 }
 
@@ -559,7 +559,7 @@
   .food__tagline,
   .food__intro-placeholder {
     font-size: 1rem;
-    word-spacing: -0.25em;
+word-spacing: -0.35em
   }
 
   .food__form {
@@ -746,7 +746,7 @@
 @media (max-width: 767px) {
   .tea__description {
     font-size: 1rem;
-    word-spacing: -0.25em;
+  word-spacing: -0.35em
   }
 
   .tea__highlight {
@@ -1019,7 +1019,7 @@
   .astro__description,
   .astro__form-intro {
     font-size: 1rem;
-    word-spacing: -0.25em;
+word-spacing: -0.35em
   }
 
   .astro__form {
