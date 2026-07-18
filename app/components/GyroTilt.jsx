@@ -52,14 +52,14 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
       const movement = Math.abs(deltaGamma) + Math.abs(beta - baseBeta);
       const now = Date.now();
 
-      if (movement > 25 && now - lastBurst > 600) {
+      if (movement > 25 && now - lastBurst > 200) {
         lastBurst = now;
         baseBeta = beta;
         baseGamma = gamma;
 
         const tiltLeft = deltaGamma < 0;
         const rotSign = Math.random() > 0.5 ? 1 : -1;
-        const rotAmount = 3 + Math.random() * 5;
+        const rotAmount = 8 + Math.random() * 12;
 
         if (tiltLeft) {
           // Drift left, rotate toward bottom-left or top-left
@@ -70,9 +70,9 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
           targetRotation += -(rotAmount);
         } else {
           // Drift right, rotate toward top-right or bottom-right
-          targetX += intensity * (0.9 + Math.random() * 1);
+          targetX += intensity * (2.9 + Math.random() * 1);
           targetY += rotSign > 0
-            ? -(intensity * (2.5 + Math.random() * 2))      // top-right
+            ? -(intensity * (3.5 + Math.random() * 2))      // top-right
             : intensity * (1 + Math.random() * 1.2);         // bottom-right
           targetRotation += rotAmount;
         }
@@ -91,7 +91,7 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
       // Soft position spring
       velocityX += (targetX - currentX) * 0.003;
       velocityY += (targetY - currentY) * 0.003;
-      velocityX *= 0.985;
+      velocityX *= 0.885;
       velocityY *= 0.985;
       currentX += velocityX;
       currentY += velocityY;
@@ -101,10 +101,10 @@ export default function GyroTilt({ children, className, intensity = 5 }) {
       rotationVelocity *= 0.985;
       currentRotation += rotationVelocity;
 
-      // Smooth sine float
-      bobTime += 0.0025;
-      const bobY = Math.sin(bobTime) * 5 + Math.sin(bobTime * 0.7) * 2;
-      const bobX = Math.sin(bobTime * 0.4) * 1.5;
+      // Clean sine float
+      bobTime += 0.01;
+      const bobY = Math.sin(bobTime) * 8.5;
+      const bobX = Math.sin(bobTime * 0.5) * 1;
 
       if (el && hasOrientation) {
         el.style.transform = `

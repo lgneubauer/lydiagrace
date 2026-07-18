@@ -38,8 +38,6 @@
 
 /* ---- Body copy ---- */
 
-/* ---- Body copy ---- */
-
 .subpage__body p {
   font-family: var(--font-serif);
   font-size: 0.9rem;
@@ -103,7 +101,7 @@
 
   .subpage__body p {
     font-size: 1rem;
-    word-spacing: -0.025em;
+    word-spacing: -0.25em;
   }
 
   .subpage__image {
@@ -353,6 +351,7 @@
   .privacy__intro,
   .privacy__text {
     font-size: 1rem;
+    word-spacing: -0.25em;
   }
 }
 
@@ -560,6 +559,7 @@
   .food__tagline,
   .food__intro-placeholder {
     font-size: 1rem;
+    word-spacing: -0.25em;
   }
 
   .food__form {
@@ -746,6 +746,7 @@
 @media (max-width: 767px) {
   .tea__description {
     font-size: 1rem;
+    word-spacing: -0.25em;
   }
 
   .tea__highlight {
@@ -1018,6 +1019,7 @@
   .astro__description,
   .astro__form-intro {
     font-size: 1rem;
+    word-spacing: -0.25em;
   }
 
   .astro__form {
