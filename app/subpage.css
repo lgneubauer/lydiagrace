@@ -88,7 +88,7 @@
 
 @media (max-width: 767px) {
   .subpage__content {
-    padding: 1rem 1.75rem 3rem;
+    padding: 1rem 2.5rem 3rem;
   }
 
   .subpage__title {
@@ -1010,7 +1010,7 @@
   font-family: var(--font-serif);
   font-size: clamp(0.82rem, 1.8vw, 0.95rem);
   font-weight: 400;
-  color: var(--color-text-secondary);
+  color: var(--color-text-primary);
   letter-spacing: 0.02em;
   margin-top: 0.4rem;
 }
