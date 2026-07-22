@@ -86,19 +86,6 @@
 }
 
 /* =============================================
-   GYRO WAVE — letter cascade on tilt
-   ============================================= */
-
-.gyro-wave {
-  display: inline;
-}
-
-.gyro-wave__char {
-  display: inline-block;
-  will-change: transform;
-}
-
-/* =============================================
    FLOAT ANIMATIONS FOR PNGs
    ============================================= */
 

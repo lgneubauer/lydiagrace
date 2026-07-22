@@ -4,21 +4,9 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IconInstagram, IconTikTok, IconYouTube, IconSubstack } from "./Icons";
-import GyroWave from "./GyroWave";
 import "./Navbar.css";
 
-function useMobile(breakpoint = 767) {
-  const [mobile, setMobile] = useState(false);
-  useEffect(() => {
-    setMobile(window.innerWidth <= breakpoint);
-  }, [breakpoint]);
-  return mobile;
-}
-
-function NavLabel({ className, children, mobile }) {
-  if (mobile) {
-    return <GyroWave className={className}>{children}</GyroWave>;
-  }
+function NavLabel({ className, children }) {
   return <span className={className}>{children}</span>;
 }
 
@@ -52,8 +40,6 @@ const DROPDOWN_ITEMS = [
 
 /* Home page — single nav, CSS handles mobile vs desktop */
 export function MenuContent({ onNavigate }) {
-  const mobile = useMobile();
-
   return (
     <div className="menu-content">
       <h1 className="menu-content__title">Lydia Grace</h1>
@@ -76,7 +62,7 @@ export function MenuContent({ onNavigate }) {
             className={`menu-content__nav-item menu-content__nav-item--${item.position}`}
             onClick={onNavigate}
           >
-            <NavLabel className="menu-content__nav-label" mobile={mobile}>
+            <NavLabel className="menu-content__nav-label">
               {item.label}
             </NavLabel>
             <img
@@ -138,7 +124,6 @@ export default function Navbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const dropdownRef = useRef(null);
-  const mobile = useMobile();
 
   const handleClose = useCallback(() => {
     setClosing(true);
@@ -233,14 +218,14 @@ export default function Navbar() {
           </div>
 
           <nav className="dropdown__nav">
-            {DROPDOWN_ITEMS.map((item, i) => (
+            {DROPDOWN_ITEMS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className="dropdown__nav-item"
                 onClick={handleClose}
               >
-                <NavLabel className="dropdown__nav-label" mobile={mobile}>
+                <NavLabel className="dropdown__nav-label">
                   {item.label}
                 </NavLabel>
 
