@@ -16,7 +16,7 @@ export const metadata = {
   title: "LYDIA GRACE",
   description: "Lydia Grace",
   icons: {
-    icon: "/Food.png",
+    icon: "/favicon.png",
   },
 };
 
