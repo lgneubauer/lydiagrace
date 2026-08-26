@@ -1,5 +1,6 @@
 import "../subpage.css";
 import Footer from "../components/Footer";
+import Image from "next/image";
 
 export const metadata = { title: "Tea Cloud — Lydia Grace" };
 
@@ -25,19 +26,27 @@ export default function TeaCloudPage() {
               message me for the address.
             </p>
             <p className="tea__highlight">
-              Next Tea Cloud — Saturday June, 27th
+              Next Tea Cloud — Saturday September 5th, 1-4pm
             </p>
           </div>
 
           <div className="tea__photos">
-            <div
+            <Image
               className="tea__photo"
-              aria-label="Tea Cloud photo placeholder"
-            ></div>
-            <div
+              src="/images/tea-cloud-1.jpg"
+              alt="Tea Cloud spread"
+              width={900}
+              height={1200}
+              style={{ width: "100%", height: "auto" }}
+            />
+            <Image
               className="tea__photo"
-              aria-label="Tea Cloud photo placeholder"
-            ></div>
+              src="/images/tea-cloud-2.jpg"
+              alt="Tea Cloud spread"
+              width={900}
+              height={1200}
+              style={{ width: "100%", height: "auto" }}
+            />
           </div>
         </div>
 
