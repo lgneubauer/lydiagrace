@@ -456,27 +456,27 @@
   width: 90px;
   object-fit: contain;
   flex-shrink: 0;
-  animation: float-png 7s ease-in-out infinite;
+  /* animation: float-png 7s ease-in-out infinite; */
 }
 
 /* Food — subtle float */
 .dropdown__nav-item:nth-child(1) .dropdown__nav-img {
-  animation: float-png-subtle 9s ease-in-out infinite;
+  /* animation: float-png-subtle 9s ease-in-out infinite; */
 }
 .dropdown__nav-item:nth-child(2) .dropdown__nav-img {
-  animation-delay: -1.8s;
+  /* animation-delay: -1.8s; */
 }
 .dropdown__nav-item:nth-child(3) .dropdown__nav-img {
-  animation-delay: -3.5s;
+  /* animation-delay: -3.5s; */
 }
 /* Yoga — subtle float */
 .dropdown__nav-item:nth-child(4) .dropdown__nav-img {
-  animation: float-png-subtle 10s ease-in-out infinite;
+  /* animation: float-png-subtle 10s ease-in-out infinite; */
 }
 
 /* Astro gets slow bouncy 360 rotation */
 .dropdown__nav-img--astro {
-  animation: float-png-astro 32s ease-in-out infinite;
+  /* animation: float-png-astro 32s ease-in-out infinite; */
 }
 
 @media (min-width: 768px) {
@@ -908,27 +908,27 @@ body.menu-open {
     width: clamp(56px, 11vh, 90px);
     object-fit: contain;
     flex-shrink: 0;
-    animation: float-png 7s ease-in-out infinite;
+    /* animation: float-png 7s ease-in-out infinite; */
   }
 
   /* Food — subtle float */
   .menu-content__nav-item:nth-child(1) .menu-content__nav-img {
-    animation: float-png-subtle 9s ease-in-out infinite;
+    /* animation: float-png-subtle 9s ease-in-out infinite; */
   }
   .menu-content__nav-item:nth-child(2) .menu-content__nav-img {
-    animation-delay: -1.8s;
+    /* animation-delay: -1.8s; */
   }
   .menu-content__nav-item:nth-child(3) .menu-content__nav-img {
-    animation-delay: -3.5s;
+    /* animation-delay: -3.5s; */
   }
   /* Yoga — subtle float */
   .menu-content__nav-item:nth-child(4) .menu-content__nav-img {
-    animation: float-png-subtle 10s ease-in-out infinite;
+    /* animation: float-png-subtle 10s ease-in-out infinite; */
   }
 
   /* Astro gets slow bouncy 360 rotation */
   .menu-content__nav-img--astro {
-    animation: float-png-astro 32s ease-in-out infinite;
+    /* animation: float-png-astro 32s ease-in-out infinite; */
   }
 
   .menu-content__socials {
