@@ -101,9 +101,17 @@
 
   .subpage__body p {
     font-size: 1rem;
-    word-spacing: -0.2em;
+    word-spacing: -0.25em;
     letter-spacing: 0.02em;
     min-width: 100%;
+    text-align: justify;
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    -webkit-hyphenate-limit-chars: 5 2 2;
+    hyphenate-limit-chars: 5 2 2;
+    -webkit-hyphenate-limit-lines: 2;
+    hyphenate-limit-lines: 2;
   }
 
   .subpage__image {
@@ -179,6 +187,26 @@
 /* =============================================
    ABOUT PAGE — CONTACT
    ============================================= */
+
+.about__image {
+  width: 100%;
+  max-width: 480px;
+  margin: 2.5rem auto;
+}
+
+.about__photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background-color: #d5d2ca;
+  border-radius: 2px;
+}
+
+@media (max-width: 767px) {
+  .about__image {
+    margin: 1.5rem auto;
+  }
+}
 
 .about__contact {
   width: 100%;
@@ -765,8 +793,16 @@
 @media (max-width: 767px) {
   .tea__description {
     font-size: 1rem;
-    word-spacing: -0.2em;
+    word-spacing: -0.25em; /* tighter than -0.2em */
     letter-spacing: 0.02em;
+    text-align: justify;
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    -webkit-hyphenate-limit-chars: 5 2 2;
+    hyphenate-limit-chars: 5 2 2;
+    -webkit-hyphenate-limit-lines: 2;
+    hyphenate-limit-lines: 2;
   }
 
   .tea__highlight {

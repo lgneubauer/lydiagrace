@@ -15,25 +15,36 @@ export default async function AboutPage({ searchParams }) {
 
         <div className="subpage__body">
           <p>
-            I&apos;m Lydia Grace, a private chef, yoga teacher, astrologer, and
+            I'm Lydia Grace, a private chef, yoga teacher, astrologer, and
             mother. Most people find me through one of those things and stay for
             all of them.
           </p>
           <p>
             My background in professional kitchens spans NYC design studios,
-            celebrity homes, branded events, and sailboats. I&apos;ve cooked for
+            celebrity homes, branded events, and sailboats. I've cooked for
             postpartum mothers during their most vulnerable weeks and for
             retreats built around slowing down.
           </p>
         </div>
 
-        <div className="subpage__image">
+        {/* <div className="subpage__image">
           <Image
             src="/about-img.png"
             alt="Abstract painted illustration — blue brushstroke, red circle, and yellow dash"
             width={280}
             height={300}
             priority
+          />
+        </div> */}
+
+        <div className="about__image">
+          <Image
+            className="about__photo"
+            src="/images/about-photo.jpg"
+            alt="Lydia Grace"
+            width={1000}
+            height={1510}
+            style={{ width: "100%", height: "auto" }}
           />
         </div>
 
