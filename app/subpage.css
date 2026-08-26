@@ -1158,14 +1158,16 @@
 @media (min-width: 1025px) {
   .astro__description,
   .astro__form-intro {
+    min-width: 0;
     font-size: 0.9rem;
     -webkit-hyphens: none;
     hyphens: none;
   }
 
   .astro__body {
-    max-width: 680px;
+    max-width: 780px;
     margin-bottom: 3rem;
+    min-width: 0;
   }
 
   .astro__form {
