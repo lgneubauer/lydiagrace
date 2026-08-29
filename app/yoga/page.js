@@ -20,12 +20,12 @@ export default async function YogaPage({ searchParams }) {
           </p>
         </div>
 
-        <div className="yoga__schedule">
+        {/* <div className="yoga__schedule">
           <h2 className="yoga__schedule-heading">Schedule</h2>
           <ul className="yoga__schedule-list">
             <li className="yoga__schedule-item">[INSERT SCHEDULE HERE]</li>
           </ul>
-        </div>
+        </div> */}
 
         <p className="yoga__availability">Private sessions available</p>
 
