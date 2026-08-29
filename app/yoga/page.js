@@ -27,7 +27,7 @@ export default async function YogaPage({ searchParams }) {
           </ul>
         </div> */}
 
-        <p className="yoga__availability">Private sessions available</p>
+        <p className="yoga__availability">PRIVATE SESSIONS AVAILABLE</p>
 
         <div className="yoga__contact">
           <p className="yoga__contact-label">Email</p>
