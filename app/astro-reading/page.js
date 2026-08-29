@@ -125,9 +125,9 @@ export default async function AstroReadingPage({ searchParams }) {
           >
             Calendly Link
           </a>
-          <p className="astro__cta-price">$111</p>
+          <p className="astro__cta-price">$77</p>
           <p className="astro__cta-details">
-            20 minute virtual session + a recording of the reading
+            30 minute virtual session + a recording of the reading
           </p>
         </div>
       </div>
