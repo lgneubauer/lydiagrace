@@ -26,33 +26,16 @@ export default async function FoodPage({ searchParams }) {
           </p>
         </div>
 
-        <div className="food__content">
-          <div className="food__clients">
-            <h2 className="food__clients-heading">Past Clients</h2>
-            <ul className="food__clients-list">
-              <li className="food__clients-item">Benshen Co.</li>
-              <li className="food__clients-item">District Vision</li>
-              <li className="food__clients-item">Christopher Golden</li>
-              <li className="food__clients-item">Alex Nashton</li>
-              <li className="food__clients-item">Sailing Collective</li>
-              <li className="food__clients-item">Lindsay Adelman</li>
-            </ul>
-          </div>
-
-          <div className="food__photos">
-            <div
-              className="food__photo"
-              aria-label="Food photo placeholder"
-            ></div>
-            <div
-              className="food__photo"
-              aria-label="Food photo placeholder"
-            ></div>
-            <div
-              className="food__photo"
-              aria-label="Food photo placeholder"
-            ></div>
-          </div>
+        <div className="food__clients">
+          <h2 className="food__clients-heading">Past Clients</h2>
+          <ul className="food__clients-list">
+            <li className="food__clients-item">Benshen Co.</li>
+            <li className="food__clients-item">District Vision</li>
+            <li className="food__clients-item">Christopher Golden</li>
+            <li className="food__clients-item">Alex Nashton</li>
+            <li className="food__clients-item">Sailing Collective</li>
+            <li className="food__clients-item">Lindsay Adelman</li>
+          </ul>
         </div>
 
         <div className="food__contact">
