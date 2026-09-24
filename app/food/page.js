@@ -15,8 +15,8 @@ export default async function FoodPage({ searchParams }) {
         <div className="food__intro">
           <p className="food__tagline">Simply here to serve.</p>
           <p className="food__intro-placeholder">
-            My love for food has allowed her to feed people all over the world.
-            I cut my teeth in New York City kitchens cooking for design studios
+            My love for food has allowed me to feed people all over the world. I
+            cut my teeth in New York City kitchens cooking for design studios
             and catering private events. Currently based in Los Angeles, I'm
             available for all your culinary needs – including private dinners,
             brand events, catering, postpartum food packages, yoga retreats, &
