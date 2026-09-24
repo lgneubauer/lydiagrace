@@ -14,7 +14,9 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata = {
   title: "LYDIA GRACE",
-  description: "Lydia Grace",
+  description:
+    "Los Angeles private chef, yoga instructor, and astrologer. Available for private dinners, catering, brand events, private yoga sessions, and birth chart readings.",
+
   icons: {
     icon: "/favicon.png",
   },
