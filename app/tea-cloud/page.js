@@ -26,7 +26,11 @@ export default function TeaCloudPage() {
               message me for the address.
             </p>
             <p className="tea__highlight">
-              Next Tea Cloud — Saturday September 5th, 1-4pm
+              Next Tea Cloud — Saturday November 21st, 1–4pm
+              <br />
+              <span className="tea__highlight-detail">
+                Los Feliz · Think Pie Contest
+              </span>
             </p>
           </div>
 

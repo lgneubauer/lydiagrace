@@ -721,6 +721,13 @@
   white-space: nowrap;
 }
 
+.tea__highlight-detail {
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.05em;
+  font-size: clamp(0.88rem, 2vw, 1.05rem);
+}
+
 .tea__photos {
   flex: 1;
   min-width: 0;
@@ -776,7 +783,8 @@
     hyphenate-limit-lines: 2;
   }
 
-  .tea__highlight {
+  .tea__highlight,
+  .tea__highlight-detail {
     font-size: 0.6rem;
     letter-spacing: 0.06em;
     text-align: center;
@@ -807,7 +815,8 @@
     gap: 1.2rem;
   }
 
-  .tea__highlight {
+  .tea__highlight,
+  .tea__highlight-detail {
     font-size: 1rem;
     letter-spacing: 0.1em;
   }
