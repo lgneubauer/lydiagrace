@@ -119,7 +119,7 @@ export default async function AstroReadingPage({ searchParams }) {
         <div className="astro__cta">
           <a
             className="astro__calendly"
-            href="https://calendly.com/lgneubauer/big-3-read"
+            href="https://calendly.com/big3read/big-3-read?utm_source=ig&utm_medium=social&utm_content=link_in_bio&utm_id=97760_v0_s00_e0_tv"
             target="_blank"
             rel="noopener noreferrer"
           >
